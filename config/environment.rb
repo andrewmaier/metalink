@@ -19,6 +19,7 @@ Rails::Initializer.run do |config|
   config.gem "rspec-rails", :version => ">= 1.2.1",  :lib => false
   config.gem "cucumber",    :version => ">= 0.2.0",  :lib => false
   config.gem "webrat",      :version => ">= 0.4.3",  :lib => false
+  config.gem "authlogic",   :version => ">= 2.0.8"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
