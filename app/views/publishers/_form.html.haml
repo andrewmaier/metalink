@@ -1,3 +1,19 @@
-= form.error_messages
-
-
+.form-elements
+  .errors= form.error_messages
+  .element
+    .label= form.label :url
+    .content
+      What site do you want to create metalinks for?
+      = form.text_field :url
+  .element
+    .label= form.label :email
+    .content= form.text_field :email
+  .element
+    .label= form.label :password
+    .content= form.password_field :password
+  .element
+    .label= form.label :password_confirmation
+    .content= form.password_field :password_confirmation
+  .element
+    .label= form.label :keywords
+    .content= form.text_field :keywords
