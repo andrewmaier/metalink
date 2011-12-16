@@ -1,7 +1,7 @@
 Fitur: Addition
-  Untuk menghindari kesalahan konyol 
+  Untuk menghindari kesalahan konyol
   Sebagai orang yang gak bisa matematika
-  Aku ingin diberi tahu jumlah dua bilangan 
+  Aku ingin diberi tahu jumlah dua bilangan
 
   Skenario konsep: Menjumlahkan dua bilangan
     Dengan aku sudah masukkan <input_1> ke kalkulator

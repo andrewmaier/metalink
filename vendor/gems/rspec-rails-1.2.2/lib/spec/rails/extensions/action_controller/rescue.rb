@@ -16,18 +16,18 @@ WARNING
         request.remote_addr = '208.77.188.166'
       end
     end
-    
+
     def use_rails_error_handling?
       @use_rails_error_handling ||= false
     end
 
   protected
-  
+
     if Rails::VERSION::STRING =~ /^2\.0/
       def rescue_action_in_public?
         request.respond_to?(:rescue_action_in_public?) and request.rescue_action_in_public?
       end
-      
+
       def rescue_action_with_handler_with_fast_errors(exception)
         if (use_rails_error_handling? || rescue_action_in_public?) & !handler_for_rescue(exception)
           rescue_action_in_public(exception)

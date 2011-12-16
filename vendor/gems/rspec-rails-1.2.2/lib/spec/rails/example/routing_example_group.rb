@@ -4,7 +4,7 @@ module Spec
 
       class RoutingExampleGroup < ActionController::TestCase
         tests Class.new(ActionController::Base)
-        
+
         Spec::Example::ExampleGroupFactory.register(:routing, self)
       end
 

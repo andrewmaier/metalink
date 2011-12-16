@@ -8,11 +8,11 @@ Scenario: Upload an image for an artist and create a concert in the process
   And I follow "add a photo"
   And I upload an Image
   # Search on select concert page
-  And I press "Search Pixies concerts" 
+  And I press "Search Pixies concerts"
   And I follow "Add a new Concert"
   And I fill in new Concert information
   And I press "Preview"
   And I press "Add concert"
   # No artists appear in this photo
-  And I press "Submit" 
+  And I press "Submit"
   Then my Concert should exist with 1 Image

@@ -39,7 +39,7 @@ end
 def fail()
   raise_error(Spec::Expectations::ExpectationNotMetError)
 end
-  
+
 def fail_with(message)
   raise_error(Spec::Expectations::ExpectationNotMetError,message)
 end

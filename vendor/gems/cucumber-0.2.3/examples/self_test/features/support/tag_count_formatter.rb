@@ -15,7 +15,7 @@ module Tag
     def visit_tag_name(tag_name)
       @counts[tag_name] += 1
     end
-    
+
     def print_summary
       matrix = @counts.to_a.sort{|paira, pairb| paira[0] <=> pairb[0]}.transpose
       table = Cucumber::Ast::Table.new(matrix)

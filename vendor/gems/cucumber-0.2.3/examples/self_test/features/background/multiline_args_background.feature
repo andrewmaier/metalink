@@ -6,7 +6,7 @@ Feature: Passing background with multiline args
       |c|d|
     And multiline string
     """
-      I'm a cucumber and I'm okay. 
+      I'm a cucumber and I'm okay.
       I sleep all night and I test all day
     """
 
@@ -16,7 +16,7 @@ Feature: Passing background with multiline args
       |c|d|
     Then the multiline string should be
     """
-      I'm a cucumber and I'm okay. 
+      I'm a cucumber and I'm okay.
       I sleep all night and I test all day
     """
 
@@ -26,7 +26,7 @@ Feature: Passing background with multiline args
       |c|d|
     Then the multiline string should be
     """
-      I'm a cucumber and I'm okay. 
+      I'm a cucumber and I'm okay.
       I sleep all night and I test all day
     """
-    
+

@@ -1,35 +1,35 @@
---- !ruby/object:Gem::Specification 
+--- !ruby/object:Gem::Specification
 name: haml
-version: !ruby/object:Gem::Version 
+version: !ruby/object:Gem::Version
   version: 2.0.9
 platform: ruby
-authors: 
+authors:
 - Nathan Weizenbaum
 - Hampton Catlin
-autorequire: 
+autorequire:
 bindir: bin
 cert_chain: []
 
 date: 2009-02-21 00:00:00 -05:00
-default_executable: 
+default_executable:
 dependencies: []
 
 description: Haml (HTML Abstraction Markup Language) is a layer on top of XHTML or XML that's designed to express the structure of XHTML or XML documents in a non-repetitive, elegant, easy way, using indentation rather than closing tags and allowing Ruby to be embedded with ease. It was originally envisioned as a plugin for Ruby on Rails, but it can function as a stand-alone templating engine.
 email: haml@googlegroups.com
-executables: 
+executables:
 - haml
 - html2haml
 - sass
 - css2sass
 extensions: []
 
-extra_rdoc_files: 
+extra_rdoc_files:
 - FAQ
 - MIT-LICENSE
 - VERSION
 - README.rdoc
 - REVISION
-files: 
+files:
 - rails/init.rb
 - lib/sass.rb
 - lib/sass
@@ -200,8 +200,8 @@ files:
 - REVISION
 has_rdoc: true
 homepage: http://haml.hamptoncatlin.com/
-post_install_message: 
-rdoc_options: 
+post_install_message:
+rdoc_options:
 - --title
 - Haml
 - --main
@@ -210,28 +210,28 @@ rdoc_options:
 - lib/haml/buffer.rb
 - --line-numbers
 - --inline-source
-require_paths: 
+require_paths:
 - lib
-required_ruby_version: !ruby/object:Gem::Requirement 
-  requirements: 
+required_ruby_version: !ruby/object:Gem::Requirement
+  requirements:
   - - ">="
-    - !ruby/object:Gem::Version 
+    - !ruby/object:Gem::Version
       version: "0"
-  version: 
-required_rubygems_version: !ruby/object:Gem::Requirement 
-  requirements: 
+  version:
+required_rubygems_version: !ruby/object:Gem::Requirement
+  requirements:
   - - ">="
-    - !ruby/object:Gem::Version 
+    - !ruby/object:Gem::Version
       version: "0"
-  version: 
+  version:
 requirements: []
 
 rubyforge_project: haml
 rubygems_version: 1.3.1
-signing_key: 
+signing_key:
 specification_version: 2
 summary: An elegant, structured XHTML/XML templating engine. Comes with Sass, a similar CSS templating engine.
-test_files: 
+test_files:
 - test/sass/css2sass_test.rb
 - test/sass/engine_test.rb
 - test/sass/plugin_test.rb

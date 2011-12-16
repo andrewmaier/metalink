@@ -5,7 +5,7 @@ require 'controller_spec_controller'
   describe "A controller example running in #{mode} mode", :type => :controller do
     controller_name :controller_spec
     integrate_views if mode == 'integration'
-    
+
     describe "without use_rails_error_handling!" do
       describe "with an error that is *not* rescued" do
         it "raises the error" do
@@ -66,7 +66,7 @@ require 'controller_spec_controller'
         end
       end
     end
-    
+
     describe "with bypass_rescue" do
       describe "with an error that is *not* rescued" do
         it "raises the error" do

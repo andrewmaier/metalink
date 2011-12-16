@@ -8,7 +8,7 @@ module Cucumber
       before do
         @parser = FeatureParser.new
       end
-      
+
       def parse(text)
         @parser.__send__(:prepare_to_parse, text)
         @parser.root = :table

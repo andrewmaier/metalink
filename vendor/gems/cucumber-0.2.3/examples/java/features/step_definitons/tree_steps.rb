@@ -2,7 +2,7 @@ require 'spec/expectations'
 include_class 'java.util.TreeSet'
 
 Given /I have an empty set/ do
-  @set = TreeSet.new  
+  @set = TreeSet.new
 end
 
 When /I add (\w+)/ do |s|

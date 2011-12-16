@@ -12,10 +12,10 @@ require 'cucumber/core_ext/exception'
 
 module Cucumber
   KEYWORD_KEYS = %w{name native encoding feature background scenario scenario_outline examples given when then but}
-  
+
   class << self
     attr_reader :lang
-    
+
     def load_language(lang) #:nodoc:
       return if @lang
       @lang = lang
@@ -38,12 +38,12 @@ module Cucumber
     def keyword_hash(lang=@lang)
       LANGUAGES[lang]
     end
-    
+
     def alias_step_definitions(lang) #:nodoc:
       keywords = %w{given when then and but}.map{|keyword| keyword_hash(lang)[keyword]}
       alias_steps(keywords)
     end
-    
+
     # Sets up additional method aliases for Given, When and Then.
     # This does *not* affect how feature files are parsed. If you
     # want to create aliases in the parser, you have to do this in
@@ -56,7 +56,7 @@ module Cucumber
         World.alias_adverb(adverb)
       end
     end
-  end  
+  end
 
   # Make sure we always have English aliases
   alias_step_definitions('en')

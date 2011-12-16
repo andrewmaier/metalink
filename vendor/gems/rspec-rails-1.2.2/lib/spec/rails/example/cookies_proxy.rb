@@ -7,7 +7,7 @@ module Spec
         def initialize(example)
           @example = example
         end
-      
+
         def[]=(name, value)
           if ::Rails::VERSION::STRING >= '2.3'
             @example.request.cookies[name.to_s] = value
@@ -15,11 +15,11 @@ module Spec
             @example.request.cookies[name.to_s] = CGI::Cookie.new(name.to_s, value)
           end
         end
-        
+
         def [](name)
           @example.response.cookies[name.to_s]
         end
-      
+
         def delete(name)
           @example.response.cookies.delete(name.to_s)
         end

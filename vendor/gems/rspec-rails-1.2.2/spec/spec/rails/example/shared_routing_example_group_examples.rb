@@ -16,7 +16,7 @@ share_as :RoutingExampleGroupSpec do
     route_for(:controller => "controller_spec", :action => "some_action", :param => '1').
       should == "/controller_spec/some_action?param=1"
   end
-  
+
   it "recognize routes with methods besides :get" do
     route_for(:controller => "rspec_on_rails_specs", :action => "update", :id => "37").
       should == {:path => "/rspec_on_rails_specs/37", :method => :put}

@@ -12,14 +12,14 @@ module Cucumber
         super(step_mother)
         @builder = Builder::XmlMarkup.new(:target => io, :indent => 2)
       end
-      
+
       def visit_features(features)
         # <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
         @builder.declare!(
           :DOCTYPE,
-          :html, 
-          :PUBLIC, 
-          '-//W3C//DTD XHTML 1.0 Strict//EN', 
+          :html,
+          :PUBLIC,
+          '-//W3C//DTD XHTML 1.0 Strict//EN',
           'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'
         )
         @builder.html(:xmlns => 'http://www.w3.org/1999/xhtml') do
@@ -68,7 +68,7 @@ module Cucumber
         end
         @open_step_list = true
       end
-      
+
       def visit_scenario_name(keyword, name, file_colon_line, source_indent)
         @builder.h3("#{keyword} #{name}")
       end

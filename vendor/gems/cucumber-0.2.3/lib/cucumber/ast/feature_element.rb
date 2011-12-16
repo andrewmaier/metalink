@@ -41,6 +41,6 @@ module Cucumber
       i = @steps.index(step) || -1
       @steps[i-1]
     end
-    
+
   end
 end

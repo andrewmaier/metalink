@@ -46,7 +46,7 @@ module Cucumber
       regexp.inspect.jlength
     end
   end
-  
+
   # A Step Definition holds a Regexp and a Proc, and is created
   # by calling <tt>Given</tt>, <tt>When</tt> or <tt>Then</tt>
   # in the <tt>step_definitions</tt> ruby files - for example:
@@ -58,7 +58,7 @@ module Cucumber
   class StepDefinition
     PARAM_PATTERN = /"([^\"]*)"/
     ESCAPED_PARAM_PATTERN = '"([^\\"]*)"'
-    
+
     def self.snippet_text(step_keyword, step_name)
       escaped = Regexp.escape(step_name).gsub('\ ', ' ').gsub('/', '\/')
       escaped = escaped.gsub(PARAM_PATTERN, ESCAPED_PARAM_PATTERN)
@@ -85,7 +85,7 @@ module Cucumber
       raise MissingProc if proc.nil?
       if String === pattern
         p = pattern.gsub(/\$\w+/, '(.*)') # Replace $var with (.*)
-        pattern = Regexp.new("^#{p}$") 
+        pattern = Regexp.new("^#{p}$")
       end
       @regexp, @proc = pattern, proc
     end

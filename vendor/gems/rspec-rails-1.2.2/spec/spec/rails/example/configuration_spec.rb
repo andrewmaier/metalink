@@ -59,7 +59,7 @@ module Spec
           config.global_fixtures = [:blah]
         end
       end
-      
+
     end
   end
 end

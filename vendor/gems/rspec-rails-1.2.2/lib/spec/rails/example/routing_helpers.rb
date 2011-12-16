@@ -2,7 +2,7 @@ module Spec
   module Rails
     module Example
       module RoutingHelpers
-        
+
         module ParamsFromQueryString # :nodoc:
           def params_from_querystring(querystring) # :nodoc:
             params = {}
@@ -13,13 +13,13 @@ module Spec
             params
           end
         end
-        
+
         class RouteFor
           include ::Spec::Rails::Example::RoutingHelpers::ParamsFromQueryString
           def initialize(example, options)
             @example, @options = example, options
           end
-  
+
           def ==(expected)
             if Hash === expected
               path, querystring = expected[:path].split('?')

@@ -2,7 +2,7 @@
 # Adapted by Aslak Hellesøy
 
 if defined?(ActiveRecord::Base)
-  require 'test_help' 
+  require 'test_help'
 else
   require 'action_controller/test_process'
   require 'action_controller/integration'
@@ -42,7 +42,7 @@ module Cucumber #:nodoc:
           @__cucumber_ar_connection.begin_db_transaction
           ActionMailer::Base.deliveries = [] if defined?(ActionMailer::Base)
         end
-        
+
         $__cucumber_toplevel.After do
           @__cucumber_ar_connection.rollback_db_transaction
           if @__cucumber_ar_connection.respond_to?(:decrement_open_transactions)

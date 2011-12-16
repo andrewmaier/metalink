@@ -1,4 +1,4 @@
-Feature: pending method causes failure in Scenario Outlines 
+Feature: pending method causes failure in Scenario Outlines
 
   Scenario Outline: blah
     Given this is pending until we fix it

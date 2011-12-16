@@ -22,7 +22,7 @@ Hoe.new('rspec-rails', Spec::Rails::VERSION::STRING) do |p|
 #{'*'*50}
 
   Thank you for installing rspec-rails-#{Spec::Rails::VERSION::STRING}
-  
+
   If you are upgrading, do this in each of your rails apps
   that you want to upgrade:
 

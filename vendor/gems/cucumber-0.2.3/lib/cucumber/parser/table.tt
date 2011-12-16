@@ -23,7 +23,7 @@ module Cucumber
       rule table_row
         space* '|' cells:(cell '|')+ space* (eol+ / eof) {
           def build
-            row = cells.elements.map do |elt| 
+            row = cells.elements.map do |elt|
               value = elt.cell.text_value.strip
               value.empty? ? nil : value
             end

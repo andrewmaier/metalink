@@ -30,7 +30,7 @@ module Cucumber
           require 'open-uri'
           open(path, &loader)
         else
-          File.open(path, Cucumber.file_mode('r'), &loader) 
+          File.open(path, Cucumber.file_mode('r'), &loader)
         end
         feature.lines = lines
         feature
@@ -67,7 +67,7 @@ module Treetop
         input.line_of(interval.first)
       end
     end
-    
+
     class CompiledParser
       include Cucumber::Parser::TreetopExt
     end

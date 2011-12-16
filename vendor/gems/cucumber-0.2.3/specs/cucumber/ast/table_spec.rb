@@ -64,14 +64,14 @@ module Cucumber
             %w{two 22222}
           ])
         end
-                
-        it "should be convertible in to an array where each row is a hash" do 
+
+        it "should be convertible in to an array where each row is a hash" do
           @table.transpose.hashes[0].should == {'one' => '1111', 'two' => '22222'}
         end
       end
-      
+
       describe ".rows_hash" do
-                
+
         it "should return a hash of the rows" do
           table = Table.new([
             %w{one 1111},
@@ -79,7 +79,7 @@ module Cucumber
           ])
           table.rows_hash.should == {'one' => '1111', 'two' => '22222'}
         end
-        
+
         it "should fail if the table doesn't have two columns" do
           faulty_table = Table.new([
             %w{one 1111 abc},
@@ -90,7 +90,7 @@ module Cucumber
           }.should raise_error('The table must have exactly 2 columns')
         end
       end
-        
+
       it "should allow renaming columns" do
         table2 = @table.map_headers('one' => :three)
         table2.hashes.first[:three].should == '4444'
@@ -130,7 +130,7 @@ module Cucumber
                               %w{cat}
                             ])
           table_with_replaced_args = table.arguments_replaced({'<book>' => nil})
-          
+
           table_with_replaced_args.hashes[0]['book'].should == 'cat'
         end
 
@@ -145,23 +145,23 @@ module Cucumber
                               ['book', 'qty'],
                               ['<book>', nil],
                             ])
-          lambda{ 
+          lambda{
             table.arguments_replaced({'<book>' => nil, '<qty>' => '5'})
           }.should_not raise_error
         end
 
       end
-      
+
       it "should convert to sexp" do
-        @table.to_sexp.should == 
-          [:table, 
-            [:row, 
-              [:cell, "one"], 
+        @table.to_sexp.should ==
+          [:table,
+            [:row,
+              [:cell, "one"],
               [:cell, "four"],
               [:cell, "seven"]
             ],
-            [:row, 
-              [:cell, "4444"], 
+            [:row,
+              [:cell, "4444"],
               [:cell, "55555"],
               [:cell, "666666"]]]
       end

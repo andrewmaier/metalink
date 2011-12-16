@@ -47,7 +47,7 @@ module Cucumber
               ]
             ]
           ]
-          
+
         )
       end
 

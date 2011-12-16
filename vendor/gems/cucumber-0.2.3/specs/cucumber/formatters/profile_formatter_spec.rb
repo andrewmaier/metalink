@@ -26,7 +26,7 @@ module Cucumber
         step_mother = stub('step_mother')
         @formatter = ProfileFormatter.new(step_mother, io)
       end
-      
+
       after(:each) do
         ::Term::ANSIColor.coloring = true
       end
@@ -44,7 +44,7 @@ module Cucumber
 
         formatter.instance_variable_get("@step_time").should == now
       end
-      
+
       describe "grouping recorded passed steps" do
 
         before(:each) do
@@ -74,7 +74,7 @@ module Cucumber
           formatter.step_passed(step_row, /nihon/, [])
 
           step_times = formatter.instance_variable_get("@step_times")
-          
+
           step_times['Given /nihon/'].length.should == 2
         end
 
@@ -148,21 +148,21 @@ module Cucumber
         io.string.should include("5.0000000  Given step invocation")
         io.string.should include("1.0000000  Given step invocation")
       end
-      
+
       xit "should sort the step invocations in descending order" do
         now = Time.now
         Time.stub!(:now).and_return(now, now+1, now, now+5)
-        
+
         step = mock_step(:format => 'step invocation', :actual_keyword => 'Given')
-        
+
         2.times do
           formatter.step_executing(step, /example 1/, nil)
           formatter.step_passed(step, /example 1/, nil)
         end
-        
+
         formatter.dump
         io_string_lines = io.string.split("\n")
-        
+
         io_string_lines.at(-2).should include('5.0000000')
         io_string_lines.at(-1).should include('1.0000000')
       end
@@ -183,7 +183,7 @@ module Cucumber
 
       xit "should print the top 5 step invocations for step definition" do
         formatter.instance_variable_set("@step_time", Time.now)
-   
+
         10.times do |test_number|
           formatter.step_passed(mock_step(:format => 'please invocate me', :actual_keyword => 'Given'), nil, nil)
         end

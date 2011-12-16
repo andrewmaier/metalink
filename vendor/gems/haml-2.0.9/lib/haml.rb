@@ -510,19 +510,19 @@ require 'haml/version'
 #
 #   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 #
-# while 
+# while
 #
 #   !!! Basic
 #
 # is compiled to:
 #
-#   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd"> 
+#   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
 #
 # and
-#   
+#
 #   !!! Mobile
 #
-# is compiled to: 
+# is compiled to:
 #
 #   <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
 #
@@ -587,7 +587,7 @@ require 'haml/version'
 #     </a>
 #   <![endif]-->
 #
-# ==== \ 
+# ==== \
 #
 # The backslash character escapes the first character of a line,
 # allowing use of otherwise interpreted characters as plain text.
@@ -939,7 +939,7 @@ require 'haml/version'
 # ...or by setting the <tt>Merb::Plugin.config[:haml]</tt> hash in <tt>init.rb</tt> in Merb...
 #
 #   Merb::Plugin.config[:haml][:format] = :html5
-# 
+#
 # ...or by passing an options hash to Haml::Engine.new.
 # Available options are:
 #

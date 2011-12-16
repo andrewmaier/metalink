@@ -1,4 +1,4 @@
-Feature: Unsubstituted argument placeholder 
+Feature: Unsubstituted argument placeholder
 
   Scenario Outline: See Annual Leave Details (as Management & Human Resource)
    Given the following users exist in the system

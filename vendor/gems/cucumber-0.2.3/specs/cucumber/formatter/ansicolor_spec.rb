@@ -5,11 +5,11 @@ module Cucumber
   module Formatter
     describe ANSIColor do
       include ANSIColor
-      
+
       after do
         ::Term::ANSIColor.coloring = true
       end
-      
+
       it "should wrap passed_param with bold green and reset to green" do
         passed_param("foo").should == "\e[32m\e[1mfoo\e[0m\e[0m\e[32m"
       end
@@ -25,7 +25,7 @@ module Cucumber
       it "should wrap comments in grey" do
         comment("foo").should == "\e[90mfoo\e[0m"
       end
-      
+
       it "should not generate ansi codes when colors are disabled" do
         ::Term::ANSIColor.coloring = false
         passed("foo").should == "foo"

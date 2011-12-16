@@ -18,7 +18,7 @@ See Upgrade.rdoc for information about upgrading to rspec-rails-1.2.1
     * thanks for Dr Nic for the pointers
   * restored require 'rubygems' where needed
     * export NO_RUBYGEMS=true if you don't use rubygems
-    
+
 * bug fixes
 
   * fix scoping issues in rspec-rails' own suite for ruby 1.9.1 (Matthias
@@ -35,22 +35,22 @@ IMPORTANT: See Upgrade.rdoc for information about upgrading to rspec-rails-1.2.0
 IMPORTANT: This release includes the following backwards-compatibility-breaking changes.
 
 * rspec-rails supports rails 2.0.2, 2.1.2, 2.2.2 and 2.3.2
-  
+
   * We are no longer supporting 1.x versions of rails.
 
 * expect_render and stub_render have been removed.
 
   * Both of these methods were deprecated in rspec-rails-1.1.5, released in Sept, 2008.
-  
+
 * { route_for(args).should == "/path" } now delegates to assert_generates (in rails)
 
   * see Upgrade.txt for more information
-  
+
 * deprecations
 
   * controller.use_rails_error_handling! is deprecated
     * use rescue_action_in_public! (from rails) instead
-  
+
 * enhancements
 
   * Adding status codes to redirect_to matcher (Damian Janowski). Closes #570.
@@ -60,13 +60,13 @@ IMPORTANT: This release includes the following backwards-compatibility-breaking 
   * it { should be_valid } (Kakutani). Closes #665.
   * controller is implicit subject in controller specs (Joe Ferris). #686.
   * template is implicit subject in view specs (Joe Ferris). #686.
-  * redirect_to and render_template matchers can accept controller or response (Joe Ferris). Closes #686. 
+  * redirect_to and render_template matchers can accept controller or response (Joe Ferris). Closes #686.
   * generated specs use declarative docstrings
   * rspec_scaffold generator generates layout and stylesheet (per Rails-2.3)
   * add bypass_rescue for controller specs
   * infer template path from the first arg passed to describe in view specs
   * separate routing specs (in spec/routing)
-  
+
 * bug fixes
 
   * you no longer *have* to load ActionMailer to get specs to run. Closes #650.
@@ -101,7 +101,7 @@ IMPORTANT: This release includes the following backwards-compatibility-breaking 
   * improve rdoc for render_template (Patch from Andrew Premdas). Fixes #571.
   * use more liberal globs to allow for specs in symlinked dirs (Martin Luder). Closes #361.
   * Enable loading fixtures from arbitrary locations (Jacek Becela). Closes #464.
-  
+
 * 7 bug fixes
 
   * Attempt to load application_controller before falling back to application (Geoff Garside). Closes #626.
@@ -135,7 +135,7 @@ IMPORTANT: This release includes the following backwards-compatibility-breaking 
 
   * correctly handle assigns that are false. Fixes #552.
   * ensure that NotYetImplemented examples report as pending (fixed in rspec, not rspec-rails). Fixes #553.
-  
+
 === Version 1.1.7 / 2008-10-02
 
 * 1 bug fix

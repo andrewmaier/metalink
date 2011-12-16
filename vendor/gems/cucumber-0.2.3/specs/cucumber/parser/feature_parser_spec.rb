@@ -36,7 +36,7 @@ Feature: hi
           [:feature, nil, "Feature: hi\n",
             [:comment, "# My comment\n"]]
         end
-        
+
         it "should parse a comment within a scenario" do
           pending "Store comment in node and output it in pretty formatter"
           parse(%{Feature: Hi
@@ -44,12 +44,12 @@ Feature: hi
     Given foo
     # When bar
     Then baz
-}).to_sexp.should == 
-          [:feature, nil, "Feature: Hi", 
-            [:scenario, 2, "Scenario:", "Hello", 
+}).to_sexp.should ==
+          [:feature, nil, "Feature: Hi",
+            [:scenario, 2, "Scenario:", "Hello",
               [:step, 3, "Given", "foo"],
-              [:comment, "# When bar\n"], 
-              [:step, 5, "Then", "baz"] 
+              [:comment, "# When bar\n"],
+              [:step, 5, "Then", "baz"]
             ]
           ]
         end
@@ -69,8 +69,8 @@ Feature: hi
         end
 
         it "should parse a file with only a multiline comment with newlines" do
-          parse("# Hello\n\n# World\n").to_sexp.should == 
-          [:feature, nil, "", 
+          parse("# Hello\n\n# World\n").to_sexp.should ==
+          [:feature, nil, "",
             [:comment, "# Hello\n\n# World\n"]]
         end
       end
@@ -89,11 +89,11 @@ Feature: hi
   @ft
 Feature: hi
 
-  @st1 @st2   
+  @st1 @st2
   Scenario: First
     Given Pepper
 
-@st3 
+@st3
    @st4    @ST5  @#^%&ST6**!
   Scenario: Second}).to_sexp.should ==
           [:feature, nil, "Feature: hi",
@@ -107,7 +107,7 @@ Feature: hi
               [:tag, "st3"], [:tag, "st4"], [:tag, "ST5"], [:tag, "#^%&ST6**!"]]]
         end
       end
-      
+
       describe "Background" do
         it "should have steps" do
           parse("Feature: Hi\nBackground:\nGiven I am a step\n").to_sexp.should ==
@@ -131,7 +131,7 @@ Scenario: bar
 
   Given baz})
         end
-            
+
         it "should have steps" do
           parse("Feature: Hi\nScenario: Hello\nGiven I am a step\n").to_sexp.should ==
           [:feature, nil, "Feature: Hi",
@@ -186,9 +186,9 @@ Examples:
             [:scenario_outline, "Scenario Outline:", "Hello",
               [:step, 3, "Given", "a <what> cucumber"],
               [:examples, "Examples:", "",
-                [:table, 
-                  [:row, 
-                    [:cell, "what"]], 
+                [:table,
+                  [:row,
+                    [:cell, "what"]],
                     [:row, [:cell, "green"]]]]]]
         end
 
@@ -206,17 +206,17 @@ Examples:
           [:feature, nil, "Feature: Hi",
             [:scenario_outline, "Scenario Outline:", "Hello",
               [:step, 4, "Given", "I have a table",
-                [:table, 
-                  [:row, 
-                    [:cell, "<a>"], 
+                [:table,
+                  [:row,
+                    [:cell, "<a>"],
                     [:cell, "<b>"]]]],
             [:examples, "Examples:", "",
               [:table,
-                [:row, 
-                  [:cell, "a"], 
+                [:row,
+                  [:cell, "a"],
                   [:cell, "b"]],
-                [:row, 
-                  [:cell, "c"], 
+                [:row,
+                  [:cell, "c"],
                   [:cell, "d"]]]]]]
         end
 

@@ -6,7 +6,7 @@ class String
       gsub(/^ {0,#{-n}}/, "")
     end
   end
-  
+
   # re.source.gsub(/\([^)]*\)/, '$var')
   # Cumulative #sub
   def subs(re, *args)
@@ -19,7 +19,7 @@ class String
   def gzub(regexp, format=nil, &proc)
     md = match(regexp)
     raise "#{self.inspect} doesn't match #{regexp.inspect}" if md.nil?
-    
+
     s = dup
     pos = 0
     md.captures.each_with_index do |m, n|
@@ -30,7 +30,7 @@ class String
       else
         format % m
       end
-      
+
       if md.offset(n+1)[0]
         s[md.offset(n+1)[0] + pos, m.length] = replacement
         pos += replacement.length - m.length
@@ -40,7 +40,7 @@ class String
   end
 
   if (Cucumber::JRUBY && Cucumber::RAILS) || Cucumber::RUBY_1_9
-    # Workaround for http://tinyurl.com/55uu3u 
+    # Workaround for http://tinyurl.com/55uu3u
     alias jlength length
   else
     require 'jcode'

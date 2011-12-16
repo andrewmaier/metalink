@@ -5,6 +5,6 @@ Feature: Passing background sample
 
   Scenario: passing background
     Then I should have '10' cukes
-    
+
   Scenario: another passing background
     Then I should have '10' cukes

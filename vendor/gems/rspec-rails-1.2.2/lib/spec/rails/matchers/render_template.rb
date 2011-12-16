@@ -1,14 +1,14 @@
 module Spec
   module Rails
     module Matchers
-    
+
       class RenderTemplate #:nodoc:
-    
+
         def initialize(expected, controller)
           @controller = controller
           @expected = expected
         end
-      
+
         def matches?(response_or_controller)
           response  = response_or_controller.respond_to?(:response) ?
                       response_or_controller.response :
@@ -35,19 +35,19 @@ module Spec
           expected_controller_path, expected_file = path_and_file(@expected)
           given_controller_path == expected_controller_path && given_file.match(expected_file)
         end
-        
+
         def failure_message_for_should
           "expected #{@expected.inspect}, got #{@actual.inspect}"
         end
-        
+
         def failure_message_for_should_not
           "expected not to render #{@expected.inspect}, but did"
         end
-        
+
         def description
           "render template #{@expected.inspect}"
         end
-      
+
         private
           def path_and_file(path)
             parts = path.split('/')
@@ -55,7 +55,7 @@ module Spec
             controller = parts.empty? ? current_controller_path : parts.join('/')
             return controller, file
           end
-        
+
           def controller_path_from(path)
             parts = path.split('/')
             parts.pop
@@ -65,9 +65,9 @@ module Spec
           def current_controller_path
             @controller.class.to_s.underscore.gsub(/_controller$/,'')
           end
-        
+
       end
-      
+
       # :call-seq:
       #   response.should render_template(template)
       #   response.should_not render_template(template)

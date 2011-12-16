@@ -35,7 +35,7 @@ module Cucumber
         # Otherwise it's always StepInvocation that gest visited instead.
         visit_step_details(visitor, first_match(visitor), @multiline_arg, :skipped, nil, nil)
       end
-      
+
       def visit_step_details(visitor, step_match, multiline_arg, status, exception, background)
         visitor.visit_step_name(@keyword, step_match, status, source_indent, background)
         visitor.visit_multiline_arg(@multiline_arg) if @multiline_arg

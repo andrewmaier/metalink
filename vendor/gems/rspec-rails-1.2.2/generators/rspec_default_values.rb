@@ -12,7 +12,7 @@ module Rails
           when :boolean                     then "false"
           else
             ""
-        end      
+        end
       end
     end
   end

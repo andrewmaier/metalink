@@ -20,10 +20,10 @@ module Cucumber
         scenario = Scenario.new(
           background=nil,
           comment=Comment.new(""),
-          tags=Tags.new(98, []), 
+          tags=Tags.new(98, []),
           line=99,
           keyword="",
-          name="", 
+          name="",
           steps=[
             Step.new(7, "Given", "this is missing"),
             Step.new(8, "Given", "y is 5")
@@ -34,7 +34,7 @@ module Cucumber
       end
 
       it "should be at exact line" do
-        s = Scenario.new(background=nil, comment=Comment.new(""), 
+        s = Scenario.new(background=nil, comment=Comment.new(""),
           tags=Tags.new(44, []), 45, keyword="", name="", steps=[])
 
         s.should be_matches_lines([44])
@@ -44,11 +44,11 @@ module Cucumber
       it "should be at line if tags or steps are" do
         s = Scenario.new(
           background=nil,
-          comment=Comment.new(""), 
-          tags=Tags.new(43, []), 
+          comment=Comment.new(""),
+          tags=Tags.new(43, []),
           line=45,
           keyword="",
-          name="", 
+          name="",
           steps=[
             Step.new(46, "Given", ""),
             Step.new(47, "Given", ""),

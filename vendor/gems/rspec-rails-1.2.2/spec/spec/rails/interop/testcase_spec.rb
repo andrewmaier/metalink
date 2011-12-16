@@ -9,10 +9,10 @@ if ActiveSupport.const_defined?(:Callbacks) && Test::Unit::TestCase.include?(Act
     @@teardown_callback_count = 0
     @@teardown_method_count = 0
     cattr_accessor :setup_callback_count, :setup_method_count, :teardown_callback_count, :teardown_method_count
-    
+
     setup :do_some_setup
     teardown :do_some_teardown
-    
+
     @@has_been_run = false
     def self.run?
       @@has_been_run
@@ -21,24 +21,24 @@ if ActiveSupport.const_defined?(:Callbacks) && Test::Unit::TestCase.include?(Act
     def self.run(options=Spec::Runner.options)
       super options
     end
-    
+
     def do_some_setup
       @@setup_callback_count += 1
     end
-    
+
     def setup
       @@setup_method_count += 1
     end
-    
+
     def test_something
       assert_equal true, true
       @@has_been_run = true
     end
-    
+
     def teardown
       @@teardown_method_count += 1
     end
-    
+
     def do_some_teardown
       @@teardown_callback_count += 1
     end
@@ -50,7 +50,7 @@ if ActiveSupport.const_defined?(:Callbacks) && Test::Unit::TestCase.include?(Act
         before(:all) do
           TestUnitTesting.run unless TestUnitTesting.run?
         end
-        
+
         it "should call the setup callbacks" do
           TestUnitTesting.setup_callback_count.should == 1
         end
@@ -66,5 +66,5 @@ if ActiveSupport.const_defined?(:Callbacks) && Test::Unit::TestCase.include?(Act
       end
     end
   end
-  
+
 end

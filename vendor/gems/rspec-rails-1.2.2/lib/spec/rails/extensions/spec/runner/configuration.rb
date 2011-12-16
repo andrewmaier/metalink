@@ -5,7 +5,7 @@ if defined?(ActiveRecord::Base)
   module Spec
     module Runner
       class Configuration
-      
+
         def initialize
           super
           self.fixture_path = RAILS_ROOT + '/spec/fixtures'

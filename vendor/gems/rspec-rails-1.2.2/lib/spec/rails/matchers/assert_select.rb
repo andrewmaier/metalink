@@ -5,14 +5,14 @@ module Spec # :nodoc:
     module Matchers
 
       class AssertSelect #:nodoc:
-        
+
         def initialize(assertion, spec_scope, *args, &block)
           @assertion = assertion
           @spec_scope = spec_scope
           @args = args
           @block = block
         end
-        
+
         def matches?(response_or_text, &block)
           @block = block if block
 
@@ -27,7 +27,7 @@ module Spec # :nodoc:
             false
           end
         end
-        
+
         def failure_message_for_should; @error.message; end
         def failure_message_for_should_not; "should not #{description}, but did"; end
 
@@ -46,7 +46,7 @@ module Spec # :nodoc:
                                                !self.headers['Content-Type'].blank? and
                                                self.headers['Content-Type'].to_sym == :xml
           end
-        
+
           def string?
             String === self
           end
@@ -58,7 +58,7 @@ module Spec # :nodoc:
           markup = response_or_text if response_or_text.string?
           HTML::Document.new(markup, false, true).root if markup
         end
-        
+
         def format_args(*args)
           args.empty? ? "" : "(#{arg_list(*args)})"
         end
@@ -68,9 +68,9 @@ module Spec # :nodoc:
             arg.respond_to?(:description) ? arg.description : arg.inspect
           end.join(", ")
         end
-        
+
       end
-      
+
       # :call-seq:
       #   response.should have_tag(*args, &block)
       #   string.should have_tag(*args, &block)
@@ -92,7 +92,7 @@ module Spec # :nodoc:
       def have_tag(*args, &block)
         @__current_scope_for_assert_select = AssertSelect.new(:assert_select, self, *args, &block)
       end
-    
+
       # wrapper for a nested assert_select
       #
       #   response.should have_tag("div#form") do
@@ -103,7 +103,7 @@ module Spec # :nodoc:
       def with_tag(*args, &block)
         @__current_scope_for_assert_select.should have_tag(*args, &block)
       end
-    
+
       # wrapper for a nested assert_select with false
       #
       #   response.should have_tag("div#1") do
@@ -114,7 +114,7 @@ module Spec # :nodoc:
       def without_tag(*args, &block)
         @__current_scope_for_assert_select.should_not have_tag(*args, &block)
       end
-    
+
       # :call-seq:
       #   response.should have_rjs(*args, &block)
       #
@@ -124,7 +124,7 @@ module Spec # :nodoc:
       def have_rjs(*args, &block)
         AssertSelect.new(:assert_select_rjs, self, *args, &block)
       end
-      
+
       # :call-seq:
       #   response.should send_email(*args, &block)
       #
@@ -134,7 +134,7 @@ module Spec # :nodoc:
       def send_email(*args, &block)
         AssertSelect.new(:assert_select_email, self, *args, &block)
       end
-      
+
       # wrapper for assert_select_encoded
       #
       # see documentation for assert_select_encoded at http://api.rubyonrails.org/

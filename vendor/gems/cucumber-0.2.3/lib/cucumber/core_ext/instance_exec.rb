@@ -19,7 +19,7 @@ class Object
       end
     end
   end
-  
+
   def cucumber_run_with_backtrace_filtering(pseudo_method)
     begin
       yield
@@ -29,7 +29,7 @@ class Object
       raise e
     end
   end
-  
+
   unless defined? instance_exec # 1.9
     # http://eigenclass.org/hiki/bounded+space+instance_exec
     module InstanceExecHelper; end

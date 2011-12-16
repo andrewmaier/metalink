@@ -5,7 +5,7 @@ Feature: Using the Console Formatter
   In order to verify this error
   I want to run this feature using the progress format
   So that it can be fixed
-  
+
   Scenario: A normal feature
     Given I have a pending step
     When  I run this feature with the progress format

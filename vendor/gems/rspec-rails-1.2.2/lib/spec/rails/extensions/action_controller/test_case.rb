@@ -10,7 +10,7 @@ module ActionController
           true
         end
       end
-      
+
     end
   end
 end

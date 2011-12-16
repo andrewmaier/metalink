@@ -8,11 +8,11 @@ class Person < ActiveRecord::Base
     end
   end
   validates_presence_of :name
-  
+
   def add_animal animal
     animal.person = self
     animals << animal
     animal.save
   end
-    
+
 end

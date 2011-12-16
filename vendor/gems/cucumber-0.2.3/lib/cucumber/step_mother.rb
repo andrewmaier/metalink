@@ -10,7 +10,7 @@ module Cucumber
       super %{Undefined step: "#{step_name}"}
       @step_name = step_name
     end
-    
+
     def nested!
       @nested = true
     end
@@ -62,7 +62,7 @@ module Cucumber
     def step_visited(step)
       steps << step unless steps.index(step)
     end
-    
+
     def steps(status = nil)
       @steps ||= []
       if(status)
@@ -134,7 +134,7 @@ module Cucumber
         top_groups
       end
     end
-    
+
     def step_definitions
       @step_definitions ||= []
     end

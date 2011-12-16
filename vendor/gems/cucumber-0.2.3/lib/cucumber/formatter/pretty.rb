@@ -47,7 +47,7 @@ module Cucumber
 
       def visit_comment_line(comment_line)
         unless comment_line.blank?
-          @io.puts(comment_line.indent(@indent)) 
+          @io.puts(comment_line.indent(@indent))
           @io.flush
         end
       end
@@ -55,7 +55,7 @@ module Cucumber
       def visit_tags(tags)
         tags.accept(self)
         if @indent == 1
-          @io.puts 
+          @io.puts
           @io.flush
         end
       end
@@ -124,7 +124,7 @@ module Cucumber
         non_failed_background_step_outside_background = !@in_background && background && (status != :failed)
         @skip_step = @step_matches.index(step_match) || non_failed_background_step_outside_background
         @step_matches << step_match
-        
+
         unless(@skip_step)
           source_indent = nil unless @options[:source]
           formatted_step_name = format_step(keyword, step_match, status, source_indent)

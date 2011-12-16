@@ -61,7 +61,7 @@ module Webrat
   # Sinatra: Reads and kills the pid from the pid file created on startup
   # Merb: Reads and kills the pid from the pid file created on startup
   # Rails: Calls mongrel_rails stop to kill the appserver
-  def self.stop_app_server 
+  def self.stop_app_server
     case Webrat.configuration.application_framework
     when :sinatra
       pid = File.read('rack.pid')

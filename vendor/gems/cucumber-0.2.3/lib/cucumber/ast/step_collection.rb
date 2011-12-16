@@ -3,7 +3,7 @@ module Cucumber
     # Holds an Array of Step or StepDefinition
     class StepCollection
       include Enumerable
-      
+
       def initialize(steps)
         @steps = steps
         @steps.each{|step| step.step_collection = self}
@@ -16,7 +16,7 @@ module Cucumber
       end
 
       def step_invocations(background = false)
-        StepCollection.new(@steps.map{ |step| 
+        StepCollection.new(@steps.map{ |step|
           i = step.step_invocation
           i.background = background
           i

@@ -54,7 +54,7 @@ module Cucumber
         @io.print(format_string(char, status))
         @io.flush
       end
-      
+
     end
   end
 end

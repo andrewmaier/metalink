@@ -3,7 +3,7 @@ Given 'I am on the Google search page' do
 end
 
 When /I search for "(.*)"/ do |query|
-  @browser.type('q', query)   
+  @browser.type('q', query)
   @browser.click 'btnG'
   @browser.wait_for_page_to_load
 end

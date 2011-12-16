@@ -38,10 +38,10 @@ If you had :id => 1 before, you need to change that to :id => "1"
 
     #old
     route_for(:controller => 'things', :action => 'show', :id => 1).should == "/things/1"
-  
+
     #new
     route_for(:controller => 'things', :action => 'show', :id => "1").should == "/things/1"
-  
+
 ==== Convert paths for non-get methods to hashes
 
 If you had an example with a route that requires post, put, or delete, you'll
@@ -49,10 +49,10 @@ need to declare that explicitly.
 
     #old
     route_for(:controller => 'things', :action => 'create').should == "/things"
-  
+
     #new
     route_for(:controller => 'things', :action => 'create').should == {:path => "/things", :method => :post}
-  
+
 === Controller/template isolation
 
 Even though controller specs do not render views by default (use
@@ -77,7 +77,7 @@ first argument passed to <tt>describe()</tt>.
         response.should have_tag("....")
       end
     end
-    
+
 === routing specs live in spec/routing
 
 <tt>script/generate rspec_scaffold</tt> now generates its routing spec in

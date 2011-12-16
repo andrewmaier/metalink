@@ -8,8 +8,8 @@ Feature: backgrounds
     Then it should pass with
     """
     Feature: Passing background sample
-    
-      Background: 
+
+      Background:
         Given '10' cukes
 
       Scenario: another passing background
@@ -17,16 +17,16 @@ Feature: backgrounds
 
     1 scenario
     3 passed steps
-    
+
     """
-  
+
   Scenario: run a feature with a background that passes
     When I run cucumber -q features/background/passing_background.feature --require features
     Then it should pass with
     """
     Feature: Passing background sample
 
-      Background: 
+      Background:
         Given '10' cukes
 
       Scenario: passing background
@@ -37,7 +37,7 @@ Feature: backgrounds
 
     2 scenarios
     4 passed steps
-    
+
     """
 
   Scenario: run a feature with scenario outlines that has a background that passes
@@ -46,20 +46,20 @@ Feature: backgrounds
     """
     Feature: Passing background with scenario outlines sample
 
-      Background: 
+      Background:
         Given '10' cukes
 
       Scenario Outline: passing background
         Then I should have '<count>' cukes
 
-      Examples: 
+      Examples:
         | count |
         | 10    |
 
       Scenario Outline: another passing background
         Then I should have '<count>' cukes
 
-      Examples: 
+      Examples:
         | count |
         | 10    |
 
@@ -74,7 +74,7 @@ Feature: backgrounds
     """
     Feature: Failing background sample
 
-      Background: 
+      Background:
         Given failing without a table
           FAIL (RuntimeError)
           ./features/step_definitions/sample_steps.rb:2:in `flunker'
@@ -100,7 +100,7 @@ Feature: backgrounds
     """
     Feature: Failing background with scenario outlines sample
 
-      Background: 
+      Background:
         Given failing without a table
           FAIL (RuntimeError)
           ./features/step_definitions/sample_steps.rb:2:in `flunker'
@@ -110,14 +110,14 @@ Feature: backgrounds
       Scenario Outline: failing background
         Then I should have '<count>' cukes
 
-      Examples: 
+      Examples:
         | count |
         | 10    |
 
       Scenario Outline: another failing background
         Then I should have '<count>' cukes
 
-      Examples: 
+      Examples:
         | count |
         | 10    |
 
@@ -133,7 +133,7 @@ Feature: backgrounds
     """
     Feature: Pending background sample
 
-      Background: 
+      Background:
         Given pending
 
       Scenario: pending background
@@ -154,7 +154,7 @@ Feature: backgrounds
     """
     Feature: Failing background after previously successful background sample
 
-      Background: 
+      Background:
         Given passing without a table
         And '10' global cukes
 
@@ -182,13 +182,13 @@ Feature: backgrounds
     """
     Feature: Passing background with multiline args
 
-      Background: 
+      Background:
         Given table
           | a | b |
           | c | d |
         And multiline string
           \"\"\"
-            I'm a cucumber and I'm okay. 
+            I'm a cucumber and I'm okay.
             I sleep all night and I test all day
           \"\"\"
 
@@ -198,7 +198,7 @@ Feature: backgrounds
           | c | d |
         Then the multiline string should be
           \"\"\"
-            I'm a cucumber and I'm okay. 
+            I'm a cucumber and I'm okay.
             I sleep all night and I test all day
           \"\"\"
 
@@ -208,13 +208,13 @@ Feature: backgrounds
           | c | d |
         Then the multiline string should be
           \"\"\"
-            I'm a cucumber and I'm okay. 
+            I'm a cucumber and I'm okay.
             I sleep all night and I test all day
           \"\"\"
 
     2 scenarios
     8 passed steps
-    
+
     """
 
   @josephwilk

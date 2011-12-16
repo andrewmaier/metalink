@@ -7,14 +7,14 @@ module Autotest::CucumberMixin
   def self.included(receiver)
     receiver::ALL_HOOKS << [:run_features, :ran_features]
   end
-  
+
   attr_accessor :features_to_run
-  
+
   def initialize
     super
     reset_features
   end
-  
+
   def run
     hook :initialize
     reset
@@ -44,11 +44,11 @@ module Autotest::CucumberMixin
     end
     hook :quit
   end
-  
+
   def all_features_good
     features_to_run == ""
   end
-  
+
   def get_to_green
     begin
       super
@@ -56,16 +56,16 @@ module Autotest::CucumberMixin
       wait_for_changes unless all_features_good
     end until all_features_good
   end
-  
+
   def rerun_all_features
     reset_features
     run_features
   end
-  
+
   def reset_features
     self.features_to_run = :all
   end
-    
+
   def run_features
     hook :run_features
     Tempfile.open('autotest-cucumber') do |dirty_features_file|
@@ -100,16 +100,16 @@ module Autotest::CucumberMixin
     end
     hook :ran_features
   end
-  
+
   def make_cucumber_cmd(features_to_run, dirty_features_filename)
     return '' if features_to_run == ''
-    
+
     profiles = YAML.load_file("cucumber.yml").keys rescue []
-    
+
     profile ||= "autotest-all" if profiles.include?("autotest-all") and features_to_run == :all
     profile ||= "autotest"     if profiles.include?("autotest")
     profile ||= nil
-    
+
     if profile
       args = ["--profile", profile]
     else
