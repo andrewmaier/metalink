@@ -1,12 +1,11 @@
 
 
-    Feature:  Some title  
+    Feature:  Some title
 
-  Scenario: first     
-  
-    Given a  
-   
-  Scenario: second  
-   
+  Scenario: first
+
+    Given a
+
+  Scenario: second
+
     Given b
-    

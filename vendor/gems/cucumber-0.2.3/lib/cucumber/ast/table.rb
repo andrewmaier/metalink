@@ -7,7 +7,7 @@ module Cucumber
     #
     # This gets parsed into a Table holding the values <tt>[['a', 'b'], ['c', 'd']]</tt>
     #
-    class Table      
+    class Table
       NULL_CONVERSIONS = Hash.new(lambda{ |cell_value| cell_value }).freeze
 
       attr_accessor :file
@@ -60,7 +60,7 @@ module Cucumber
           row.to_hash
         end
       end
-      
+
       # Converts this table into a Hash where the first column is
       # used as keys and the second column is used as values
       #
@@ -71,7 +71,7 @@ module Cucumber
       #
       #   {'a' => '2', 'b' => '3'}
       #
-      # The table must be exactly two columns wide 
+      # The table must be exactly two columns wide
       #
       def rows_hash
         verify_table_width(2)
@@ -143,8 +143,8 @@ module Cucumber
       end
 
       # Change how #hashes converts column values. The +column_name+ argument identifies the column
-      # and +conversion_proc+ performs the conversion for each cell in that column. If +strict+ is 
-      # true, an error will be raised if the column named +column_name+ is not found. If +strict+ 
+      # and +conversion_proc+ performs the conversion for each cell in that column. If +strict+ is
+      # true, an error will be raised if the column named +column_name+ is not found. If +strict+
       # is false, no error will be raised. Example:
       #
       #   Given /^an expense report for (.*) with the following posts:$/ do |table|
@@ -177,7 +177,7 @@ module Cucumber
       def verify_column(column_name)
         raise %{The column named "#{column_name}" does not exist} unless @raw[0].include?(column_name)
       end
-      
+
       def verify_table_width(width)
         raise %{The table must have exactly #{width} columns} unless @raw[0].size == width
       end

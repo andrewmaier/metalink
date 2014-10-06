@@ -35,7 +35,7 @@ if defined?(ActiveRecord::Base)
       end
     end
   end
-  
+
   module ActiveRecord #:nodoc:
     class Base
       extend  Spec::Rails::Extensions::ActiveRecord::ClassMethods

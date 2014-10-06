@@ -3,4 +3,3 @@ class ::Object #:nodoc:
     class << self; self end
   end
 end
-    

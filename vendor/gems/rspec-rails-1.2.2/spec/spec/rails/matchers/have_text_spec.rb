@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../../../spec_helper'
 
 describe "have_text" do
-  
+
 
   it "should have a helpful description" do
     matcher = have_text("foo bar")
@@ -15,7 +15,7 @@ describe "have_text" do
       matcher.matches?('bar').should be_nil
     end
   end
-  
+
   describe "where target is a String" do
     it 'should match submitted text using a string' do
       matcher = have_text('foo')
@@ -23,7 +23,7 @@ describe "have_text" do
       matcher.matches?('foo bar').should be_false
     end
   end
-  
+
 end
 
 describe "have_text",
@@ -59,7 +59,7 @@ describe "have_text",
           response.should have_text("this is the text for this action")
         }.should fail_with(/expected \"this is the text for this action\", got .*/)
       end
-      
+
       it "should pass using should_not with incorrect text" do
         post 'text_action'
         response.should_not have_text("the accordian guy")

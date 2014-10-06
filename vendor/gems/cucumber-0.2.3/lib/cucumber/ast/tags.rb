@@ -24,7 +24,7 @@ module Cucumber
           visitor.visit_tag_name(tag_name)
         end
       end
-      
+
       def to_sexp
         @tag_names.map{|tag_name| [:tag, tag_name]}
       end

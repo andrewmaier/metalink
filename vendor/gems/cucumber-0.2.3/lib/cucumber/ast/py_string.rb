@@ -38,7 +38,7 @@ module Cucumber
       def accept(visitor)
         visitor.visit_py_string(to_s, @status)
       end
-      
+
       def arguments_replaced(arguments) #:nodoc:
         string = @string
         arguments.each do |name, value|
@@ -47,12 +47,12 @@ module Cucumber
         end
         PyString.new(@start_line, @end_line, string, @quotes_indent)
       end
-      
+
       # For testing only
       def to_sexp #:nodoc:
         [:py_string, to_s]
       end
-    
+
     end
   end
 end

@@ -2,7 +2,7 @@ Omadus: Liitmine
   Selleks et vältida rumalaid vigu
   Olles matemaatika-puupea
   Tahan et mulle öeldaks kahe numbri summa
- 
+
   Raamstsenaarium: Liida kaks numbrit
     Eeldades et olen sisestanud kalkulaatorisse numbri <input_1>
     Ja olen sisestanud kalkulaatorisse numbri <input_2>

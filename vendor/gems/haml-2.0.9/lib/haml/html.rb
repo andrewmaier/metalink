@@ -154,7 +154,7 @@ module Haml
       end
 
       private
-      
+
       def dynamic_attributes
         @dynamic_attributes ||= begin
           attributes.inject({}) do |dynamic, pair|
@@ -173,19 +173,19 @@ module Haml
           end
         end
       end
-      
+
       def static_attribute?(name)
         attributes[name] and !dynamic_attribute?(name)
       end
-      
+
       def dynamic_attribute?(name)
         HTML.options[:rhtml] and dynamic_attributes.key?(name)
       end
-      
+
       def static_id?
         static_attribute? 'id'
       end
-      
+
       def static_classname?
         static_attribute? 'class'
       end

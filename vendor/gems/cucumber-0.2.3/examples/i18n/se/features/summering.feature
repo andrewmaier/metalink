@@ -8,7 +8,7 @@ Egenskap: Summering
     Och att jag har knappat in 7
     När jag summerar
     Så ska resultatet vara 12
-  
+
   Scenario: tre tal
     Givet att jag har knappat in 5
     Och att jag har knappat in 4

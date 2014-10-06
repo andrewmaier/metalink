@@ -58,21 +58,21 @@ specs/cucumber/step_mother_spec.rb:40:in `/Three cute (.*)/'
         @step_mother.step_match("Three blind mice")
       end.should_not raise_error
     end
-    
+
     it "should pick right step definition when --guess is enabled and equal number of capture groups" do
       @step_mother.options = {:guess => true}
       right = @step_mother.Given(/Three (.*) mice/) {|disability|}
       wrong = @step_mother.Given(/Three (.*)/) {|animal|}
       @step_mother.step_match("Three blind mice").step_definition.should == right
     end
-    
+
     it "should pick right step definition when --guess is enabled and unequal number of capture groups" do
       @step_mother.options = {:guess => true}
       right = @step_mother.Given(/Three (.*) mice ran (.*)/) {|disability|}
       wrong = @step_mother.Given(/Three (.*)/) {|animal|}
       @step_mother.step_match("Three blind mice ran far").step_definition.should == right
     end
-    
+
     it "should raise Undefined error when no step definitions match" do
       lambda do
         @step_mother.step_match("Three blind mice")

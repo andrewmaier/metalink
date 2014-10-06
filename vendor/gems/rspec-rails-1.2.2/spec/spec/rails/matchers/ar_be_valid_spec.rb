@@ -38,7 +38,7 @@ describe "be_valid" do
   end
 
   it "should show errors in the output if they're available" do
-    lambda { 
+    lambda {
       CanHaveErrors.new(true).should be_valid
     }.should fail_with(/Name is too short/)
   end

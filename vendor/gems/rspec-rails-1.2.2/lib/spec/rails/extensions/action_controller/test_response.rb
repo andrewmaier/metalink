@@ -5,7 +5,7 @@ module ActionController #:nodoc:
     def capture(name)
       template.instance_variable_get "@content_for_#{name.to_s}"
     end
-    
+
     if ::Rails::VERSION::STRING < "2.3"
       def [](name)
         Kernel.warn <<-WARNING

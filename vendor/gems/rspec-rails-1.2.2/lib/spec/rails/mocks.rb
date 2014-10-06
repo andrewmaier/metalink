@@ -4,7 +4,7 @@ module Spec
     class IllegalDataAccessException < StandardError; end
 
     module Mocks
-      
+
       # Creates a mock object instance for a +model_class+ with common
       # methods stubbed out. Additional methods may be easily stubbed (via
       # add_stubs) if +stubs+ is passed.
@@ -40,7 +40,7 @@ module Spec
         yield m if block_given?
         m
       end
-      
+
       module ModelStubber
         def connection
           raise Spec::Rails::IllegalDataAccessException.new("stubbed models are not allowed to access the database")
@@ -108,7 +108,7 @@ module Spec
           yield model if block_given?
         end
       end
-      
+
       # DEPRECATED - use object.stub!(:method => value, :method2 => value)
       #
       # Stubs methods on +object+ (if +object+ is a symbol or string a new mock
@@ -117,9 +117,9 @@ module Spec
         Kernel.warn <<-WARNING
 DEPRECATION NOTICE: add_stubs is deprecated and will be removed
 from a future version of rspec-rails. Use this instead:
-  
+
   object.stub!(:method => value, :method2 => value)
-  
+
 WARNING
         object.stub!(stubs)
       end

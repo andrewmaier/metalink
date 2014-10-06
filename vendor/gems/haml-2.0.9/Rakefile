@@ -149,7 +149,7 @@ END
       result = RubyProf.profile { times.times { obj.render } }
     end
 
-    RubyProf.const_get("#{(ENV['OUTPUT'] || 'Flat').capitalize}Printer").new(result).print 
+    RubyProf.const_get("#{(ENV['OUTPUT'] || 'Flat').capitalize}Printer").new(result).print
   end
 rescue LoadError; end
 

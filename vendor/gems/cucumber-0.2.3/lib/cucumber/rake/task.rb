@@ -8,7 +8,7 @@ module Cucumber
     #
     #   Cucumber::Rake::Task.new
     #
-    # This will create a task named 'features' described as 'Run Features with 
+    # This will create a task named 'features' described as 'Run Features with
     # Cucumber'. It will use steps from 'features/**/*.rb' and features in 'features/**/*.feature'.
     #
     # To further configure the task, you can pass a block:
@@ -22,7 +22,7 @@ module Cucumber
     #   Cucumber::Rake::Task.new do |t|
     #     t.rcov = true
     #   end
-    # 
+    #
     # See the attributes for additional configuration possibilities.
     class Task
       LIB    = File.expand_path(File.dirname(__FILE__) + '/../..') # :nodoc:
@@ -33,12 +33,12 @@ module Cucumber
       attr_accessor :binary
       # Array of paths to specific step definition files to use
       attr_accessor :step_list
-      # File pattern for finding step definitions. Defaults to 
+      # File pattern for finding step definitions. Defaults to
       # 'features/**/*.rb'.
       attr_accessor :step_pattern
-      # Array of paths to specific features to run. 
+      # Array of paths to specific features to run.
       attr_accessor :feature_list
-      # File pattern for finding features to run. Defaults to 
+      # File pattern for finding features to run. Defaults to
       # 'features/**/*.feature'. Can be overriden by the FEATURE environment variable.
       attr_accessor :feature_pattern
       # Extra options to pass to the cucumber binary. Can be overridden by the CUCUMBER_OPTS environment variable.

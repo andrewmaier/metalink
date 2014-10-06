@@ -18,14 +18,14 @@ html(:xmlns=>'http://www.w3.org/1999/xhtml', 'xml:lang'=>'en-US') do
     end
     self << "Wow.|"
     p do
-      self << "Holy cow        " + 
-        "multiline       " +       
-        "tags!           " + 
-        "A pipe (|) even!"   
+      self << "Holy cow        " +
+        "multiline       " +
+        "tags!           " +
+        "A pipe (|) even!"
       self << [1, 2, 3].collect { |n| "PipesIgnored|" }
-      self << [1, 2, 3].collect { |n|     
-          n.to_s                    
-        }.join("|")                
+      self << [1, 2, 3].collect { |n|
+          n.to_s
+        }.join("|")
     end
     div(:class => "silent") do
       foo = String.new

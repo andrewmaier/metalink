@@ -4,10 +4,10 @@ if Rails::VERSION::STRING >= '2.2' && Rails.configuration.cache_classes
 #{'*'*65}
 
   Rails.configuration.cache_classes == true
-  
+
   This means that spec_server won't reload your classes when
   you change them, which defeats the purpose of spec_server.
-  
+
   Please set 'config.cache_classes = false' (it's probably
   set to true in config/environments/test.rb) and give it
   another try.
@@ -58,17 +58,17 @@ module Spec
           DRb.thread.join
         end
       end
-      
+
       def run(argv, stderr, stdout)
         $stdout = stdout
         $stderr = stderr
-        
+
         ::Rails::Configuration.extend Module.new {def cache_classes; false; end}
 
         ::ActiveSupport.const_defined?(:Dependencies) ?
           ::ActiveSupport::Dependencies.mechanism = :load :
           ::Dependencies.mechanism = :load
-        
+
         require 'action_controller/dispatcher'
         dispatcher = ::ActionController::Dispatcher.new($stdout)
 
@@ -77,7 +77,7 @@ module Spec
         else
           dispatcher.reload_application
         end
-        
+
         if Object.const_defined?(:Fixtures) && Fixtures.respond_to?(:reset_cache)
           Fixtures.reset_cache
         end
@@ -93,7 +93,7 @@ module Spec
           load "#{RAILS_ROOT}/db/schema.rb"
           ActiveRecord::Migrator.up('db/migrate')
         end
-        
+
         ::Spec::Runner::CommandLine.run(
           ::Spec::Runner::OptionParser.parse(
             argv,

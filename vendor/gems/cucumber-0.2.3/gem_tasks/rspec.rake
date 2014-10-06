@@ -2,7 +2,7 @@ def unable_to_load
   STDERR.puts <<-EOS
 To use rspec for testing you must install rspec gem:
     gem install rspec
-    
+
 EOS
   nil
 end

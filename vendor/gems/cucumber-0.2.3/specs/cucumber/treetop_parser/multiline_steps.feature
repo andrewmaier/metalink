@@ -13,5 +13,5 @@ Feature: Multiline steps should work
         that "indents"
       and spans
       several lines
-      
+
       """

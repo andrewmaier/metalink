@@ -32,14 +32,14 @@ module Cucumber
         @io.puts "\n\nTop #{NUMBER_OF_STEP_DEFINITONS_TO_SHOW} average slowest steps with #{NUMBER_OF_STEP_INVOCATIONS_TO_SHOW} slowest matches:\n"
 
         mean_durations = map_to_mean_durations(@step_definition_durations)
-        mean_durations = mean_durations.sort_by do |duration_description_location, step_definition, mean_duration| 
+        mean_durations = mean_durations.sort_by do |duration_description_location, step_definition, mean_duration|
           mean_duration
         end.reverse
 
         mean_durations[0...NUMBER_OF_STEP_DEFINITONS_TO_SHOW].each do |duration_description_location, step_definition, mean_duration|
           print_step_definition(step_definition, mean_duration)
-          duration_description_location = duration_description_location.sort_by do |duration, description, location| 
-            duration 
+          duration_description_location = duration_description_location.sort_by do |duration, description, location|
+            duration
           end.reverse
           print_step_definitions(duration_description_location, step_definition)
         end

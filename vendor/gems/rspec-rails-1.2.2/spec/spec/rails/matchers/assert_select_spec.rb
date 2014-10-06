@@ -59,7 +59,7 @@ module AssertSelectSpecHelpers
     @controller.response = xml
     get :xml
   end
-  
+
   def first_non_rspec_line_in_backtrace_of(error)
     rlocation = File.join('rspec', 'lib', 'spec')
     error.backtrace.reject { |line|
@@ -75,7 +75,7 @@ module AssertSelectSpecHelpers
 end
 
 unless defined?(SpecFailed)
-  SpecFailed = Spec::Expectations::ExpectationNotMetError 
+  SpecFailed = Spec::Expectations::ExpectationNotMetError
 end
 
 describe "should have_tag", :type => :controller do
@@ -121,7 +121,7 @@ describe "should have_tag", :type => :controller do
     lambda { response.should have_tag("div", :text=>/foobar/) }.should raise_error(SpecFailed)
     lambda { response.should have_tag("p", :text=>/foo/) }.should raise_error(SpecFailed)
   end
-  
+
   it "should use submitted message" do
     render_html %Q{nothing here}
     lambda {
@@ -179,7 +179,7 @@ describe "should have_tag", :type => :controller do
         elements.size.should == 3
       end
     }.should raise_error(SpecFailed, "expected: 3,\n     got: 2 (using ==)")
-    
+
     lambda {
       response.should have_tag("div#?", /\d+/) { |elements|
         elements.size.should == 3
@@ -191,9 +191,9 @@ describe "should have_tag", :type => :controller do
       with_tag("#1")
       with_tag("#2")
       without_tag("#3")
-    end 
+    end
   end
-  
+
   #added for RSpec
   it "nested tags in form" do
     render_html %Q{
@@ -210,20 +210,20 @@ describe "should have_tag", :type => :controller do
     response.should have_tag("form[action=other]") { |form|
       with_tag("input[type=text][name=other_input]")
     }
-    
+
     lambda {
       response.should have_tag("form[action=test]") { |form|
         with_tag("input[type=text][name=other_input]")
       }
     }.should raise_error(SpecFailed)
-    
+
     lambda {
       response.should have_tag("form[action=test]") {
         with_tag("input[type=text][name=other_input]")
       }
     }.should raise_error(SpecFailed)
   end
-  
+
   it "should report the correct line number for a nested failed expectation" do
     render_html %Q{
       <form action="test">
@@ -235,7 +235,7 @@ describe "should have_tag", :type => :controller do
         @expected_error_line = __LINE__; should have_tag("input[type=text][name=other_input]")
       }
     rescue => e
-      first_non_rspec_line_in_backtrace_of(e).should =~ 
+      first_non_rspec_line_in_backtrace_of(e).should =~
         /#{File.basename(__FILE__)}:#{@expected_error_line}/
     else
       fail
@@ -253,7 +253,7 @@ describe "should have_tag", :type => :controller do
         @expected_error_line = __LINE__; raise "Failed!"
       }
     rescue => e
-      first_non_rspec_line_in_backtrace_of(e).should =~ 
+      first_non_rspec_line_in_backtrace_of(e).should =~
         /#{File.basename(__FILE__)}:#{@expected_error_line}/
     else
       fail
@@ -280,7 +280,7 @@ describe "should have_tag", :type => :controller do
     end
   end
 
-  
+
   it "beatles" do
     unless defined?(BEATLES)
       BEATLES = [
@@ -305,7 +305,7 @@ describe "should have_tag", :type => :controller do
         <div class="beatle">
           <h2>Ringo</h2><p>Drums</p>
         </div>
-      </div>          
+      </div>
     }
     response.should have_tag("div#beatles>div[class=\"beatle\"]", 4)
 
@@ -344,7 +344,7 @@ describe "should have_tag", :type => :controller do
       with_tag("#1")
       with_tag("#2")
     }
-    
+
     lambda {
       response.should have_tag("div") { |elements|
         elements.size.should == 2
@@ -375,7 +375,7 @@ describe "should have_tag", :type => :controller do
       with_tag("#2")
     }
   end
-  
+
   it "assert_select_from_rjs with multiple items" do
     render_rjs do |page|
       page.replace_html "test", "<div id=\"1\">foo</div>"
@@ -444,7 +444,7 @@ describe "css_select", :type => :controller do
     css_select("#1").should have(1).element
     css_select("#2").should have(1).element
   end
-  
+
 end
 
 describe "have_rjs behaviour_type", :type => :controller do
@@ -461,11 +461,11 @@ describe "have_rjs behaviour_type", :type => :controller do
       page["test5"].hide
     end
   end
-  
+
   it "should pass if any rjs exists" do
     response.should have_rjs
   end
-  
+
   it "should fail if no rjs exists" do
     render_rjs do |page|
     end
@@ -473,7 +473,7 @@ describe "have_rjs behaviour_type", :type => :controller do
       response.should have_rjs
     end.should raise_error(SpecFailed)
   end
-  
+
   it "should find all rjs from multiple statements" do
     response.should have_rjs do
       with_tag("#1")
@@ -489,7 +489,7 @@ describe "have_rjs behaviour_type", :type => :controller do
       with_tag("div", 1)
       with_tag("div#1", "foo")
     }
-    
+
     lambda do
       response.should have_rjs("test1") { |rjs|
         rjs.size.should == 1
@@ -506,7 +506,7 @@ describe "have_rjs behaviour_type", :type => :controller do
     # response.should have_rjs("test4")
     # response.should have_rjs("test5")
   end
-  
+
   # specify "should find rjs using :hide" do
   #   response.should have_rjs(:hide)
   #   response.should have_rjs(:hide, "test4")
@@ -555,7 +555,7 @@ describe "have_rjs behaviour_type", :type => :controller do
       response.should have_rjs(:replace_html, "test3")
     }.should raise_error(SpecFailed)
   end
-    
+
   it "should find rjs using :insert_html (non-positioned)" do
     response.should have_rjs(:insert_html) { |rjs|
       with_tag("div", 1)
@@ -616,7 +616,7 @@ describe "have_rjs behaviour_type", :type => :controller do
       with_tag("#4")
     }
   end
-  
+
   it "should find rjs using :insert (positioned)" do
     pending("await fix for http://rails.lighthouseapp.com/projects/8994-ruby-on-rails/tickets/982")
     render_rjs do |page|
@@ -650,7 +650,7 @@ describe "send_email behaviour_type", :type => :controller do
       response.should send_email{}
     }.should raise_error(SpecFailed, /No e-mail in delivery list./)
   end
-  
+
   it "should pass otherwise" do
     AssertSelectMailer.deliver_test "<div><p>foo</p><p>bar</p></div>"
     response.should send_email
@@ -664,7 +664,7 @@ describe "send_email behaviour_type", :type => :controller do
         with_tag("p:last-child", "bar")
       }
     }
-    
+
     lambda {
       response.should_not send_email
     }.should raise_error(SpecFailed, "should not send email, but did")
@@ -721,7 +721,7 @@ describe "have_tag", :type => :controller do
         </div>
         <div class="piece">
           <h3>Another</h3>
-        </div>      
+        </div>
       </div>
     }
 
@@ -744,13 +744,13 @@ describe 'selecting in HTML that contains a mock with null_object' do
       alias_method :initialize, :initialize_with_strict_error_checking
     end
   end
-  
+
   describe 'modified HTML::Document' do
     it 'should raise error on valid HTML even though false is specified' do
       lambda {HTML::Document.new("<b>#<Spec::Mocks::Mock:0x267b4f0></b>", false, false)}.should raise_error
     end
   end
-    
+
   it 'should not print errors from assert_select' do
     mock = mock("Dog", :null_object => true)
     html = "<b>#{mock.colour}</b>"
@@ -760,50 +760,50 @@ end
 
 # describe "An rjs call to :visual_effect, a 'should have_rjs' spec with",
 #   :type => :view do
-#     
+#
 #   before do
 #     render 'rjs_spec/visual_effect'
 #   end
-# 
+#
 #   it "should pass with the correct element name" do
 #     response.should have_rjs(:effect, :fade, 'mydiv')
 #   end
-#   
+#
 #   it "should fail the wrong element name" do
 #     lambda {
 #       response.should have_rjs(:effect, :fade, 'wrongname')
 #     }.should raise_error(SpecFailed)
 #   end
-#   
+#
 #   it "should fail with the correct element but the wrong command" do
 #     lambda {
 #       response.should have_rjs(:effect, :puff, 'mydiv')
 #     }.should raise_error(SpecFailed)
 #   end
-#   
+#
 # end
-#   
+#
 # describe "An rjs call to :visual_effect for a toggle, a 'should have_rjs' spec with",
 #   :type => :view do
-#     
+#
 #   before do
 #     render 'rjs_spec/visual_toggle_effect'
 #   end
-#   
+#
 #   it "should pass with the correct element name" do
 #     response.should have_rjs(:effect, :toggle_blind, 'mydiv')
 #   end
-#   
+#
 #   it "should fail with the wrong element name" do
 #     lambda {
 #       response.should have_rjs(:effect, :toggle_blind, 'wrongname')
 #     }.should raise_error(SpecFailed)
 #   end
-#   
+#
 #   it "should fail the correct element but the wrong command" do
 #     lambda {
 #       response.should have_rjs(:effect, :puff, 'mydiv')
 #     }.should raise_error(SpecFailed)
 #   end
-#   
+#
 # end

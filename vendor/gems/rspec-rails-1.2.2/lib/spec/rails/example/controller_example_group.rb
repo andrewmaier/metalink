@@ -43,7 +43,7 @@ module Spec
       #
       class ControllerExampleGroup < FunctionalExampleGroup
         class << self
-                    
+
           # Use integrate_views to instruct RSpec to render views in
           # your controller examples in Integration mode.
           #
@@ -56,11 +56,11 @@ module Spec
           def integrate_views(integrate_views = true)
             @integrate_views = integrate_views
           end
-          
+
           def integrate_views? # :nodoc:
             @integrate_views
           end
-          
+
           def inherited(klass) # :nodoc:
             klass.integrate_views(integrate_views?)
             klass.subject { controller }
@@ -93,7 +93,7 @@ module Spec
             tests "#{name}_controller".camelize.constantize
           end
         end
-        
+
         before(:each) do
           # Some Rails apps explicitly disable ActionMailer in environment.rb
           if defined?(ActionMailer)
@@ -107,7 +107,7 @@ Controller specs need to know what controller is being specified. You can
 indicate this by passing the controller to describe():
 
   describe MyController do
-    
+
 or by declaring the controller's name
 
   describe "a MyController" do
@@ -121,7 +121,7 @@ MESSAGE
         end
 
         attr_reader :response, :request, :controller
-        
+
         def integrate_views?
           @integrate_views || self.class.integrate_views?
         end
@@ -143,7 +143,7 @@ MESSAGE
             end
           end
         end
-        
+
       protected
 
         def _assigns_hash_proxy
@@ -151,41 +151,41 @@ MESSAGE
         end
 
       private
-        
+
         module TemplateIsolationExtensions
           def file_exists?(ignore); true; end
-          
+
           def render_file(*args)
             @first_render ||= args[0] unless args[0] =~ /^layouts/
           end
-          
+
           # Rails 2.2
           def _pick_template(*args)
             @_first_render ||= args[0] unless args[0] =~ /^layouts/
             PickedTemplate.new
           end
-          
+
           def render(*args)
             return super if Hash === args.last && args.last[:inline]
             @_rendered ? record_render(args[0]) : super
           end
-        
+
         private
-        
+
           def record_render(opts)
             (@_rendered[:template] ||= opts[:file]) if opts[:file]
             (@_rendered[:partials][opts[:partial]] += 1) if opts[:partial]
           end
-          
+
           # Returned by _pick_template when running controller examples in isolation mode.
-          class PickedTemplate 
+          class PickedTemplate
             # Do nothing when running controller examples in isolation mode.
             def render_template(*ignore_args); end
             # Do nothing when running controller examples in isolation mode.
             def render_partial(*ignore_args);  end
           end
         end
-        
+
         module ControllerInstanceMethods # :nodoc:
           include Spec::Rails::Example::RenderObserver
 
@@ -212,7 +212,7 @@ MESSAGE
               end
             end
           end
-          
+
           def response(&block)
             # NOTE - we're setting @update for the assert_select_spec - kinda weird, huh?
             @update = block
@@ -224,7 +224,7 @@ MESSAGE
           end
 
         private
-        
+
           def integrate_views?
             @integrate_views
           end
@@ -232,15 +232,15 @@ MESSAGE
           def matching_message_expectation_exists(options)
             render_proxy.__send__(:__mock_proxy).__send__(:find_matching_expectation, :render, options)
           end
-        
+
           def matching_stub_exists(options)
             render_proxy.__send__(:__mock_proxy).__send__(:find_matching_method_stub, :render, options)
           end
-        
+
         end
 
         Spec::Example::ExampleGroupFactory.register(:controller, self)
-        
+
       end
     end
   end

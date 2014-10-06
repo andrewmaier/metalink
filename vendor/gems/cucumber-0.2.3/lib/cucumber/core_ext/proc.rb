@@ -1,7 +1,7 @@
 # Proc extension to get more location info out of a proc
 class Proc
   PROC_PATTERN = /[\d\w]+@(.*):(.*)>/
-  
+
   if Proc.new{}.to_s =~ PROC_PATTERN
     def backtrace_line(name)
       "#{file_colon_line}:in `#{name}'"
@@ -21,7 +21,7 @@ class Proc
   else
     # This Ruby implementation doesn't implement Proc#to_s correctly
     STDERR.puts "*** THIS RUBY IMPLEMENTATION DOESN'T REPORT FILE AND LINE FOR PROCS ***"
-    
+
     def backtrace_line
       nil
     end
@@ -30,4 +30,4 @@ class Proc
       ""
     end
   end
-end 
+end

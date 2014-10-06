@@ -25,21 +25,21 @@ module Cucumber
         background = Background.new(
           comment=Comment.new(''),
           line=2,
-          keyword="", 
+          keyword="",
           steps=[
             Step.new(7, "Given", "y is 5")
           ])
 
         scenario = Scenario.new(
           background,
-          comment=Comment.new(""), 
+          comment=Comment.new(""),
           tags=Tags.new(98,[]),
           line=99,
-          keyword="", 
-          name="", 
+          keyword="",
+          name="",
           steps=[])
         background.feature = @feature
-        
+
         @visitor.visit_background(background)
         $x.should == 2
         $y.should == 10

@@ -9,7 +9,7 @@ in your steps. Windows/JRuby users can enjoy colours and you get some more sugar
 * Added new Cucumber::Ast::Table#rows_hash method (Torbjørn Vatn)
 * Windows/JRuby users can now enjoy colourful output (via http://github.com/aslakhellesoy/ansicolor) (#166 Aslak Hellesøy)
 * Ambiguous step errors hint about --guess (unless --guess already on) (Aslak Hellesøy)
-* Added translation for Slovak (Ahmed Al Hafoudh) 
+* Added translation for Slovak (Ahmed Al Hafoudh)
 * Updated translation for Dutch (Bart Zonneveld)
 * Updated translation for Italian (Alessandro Baroni)
 * Updated translation for Japanese (KAKUTANI Shintaro)
@@ -48,11 +48,11 @@ This release fixes a few minor bugs and adds a couple of new features.
 
 == 0.2.0 2009-03-18
 
-This release sports a bunch of new and exciting features, as well a major rewrite of Cucumber's internals. 
-The rewrite was done to address technical debt and to have a code base that is easier to evolve and maintain. 
+This release sports a bunch of new and exciting features, as well a major rewrite of Cucumber's internals.
+The rewrite was done to address technical debt and to have a code base that is easier to evolve and maintain.
 
-There are some changes to the Gherkin language that breaks backwards compatible with the 0.1.x series. 
-Most importantly, "GivenScenario" and "More Examples" no longer exist. See the "Removed features" section 
+There are some changes to the Gherkin language that breaks backwards compatible with the 0.1.x series.
+Most importantly, "GivenScenario" and "More Examples" no longer exist. See the "Removed features" section
 below for more details on how to use alternatives.
 
 Since the grammar has changed, there are some new keywords. We have to rely on the community
@@ -60,18 +60,18 @@ to provide updated translations. This is much easier than before - just update l
 There is no static code generation anymore. To list all languages:
 
   cucumber --lang help
-  
+
 And to list the keywords for a particular language:
 
   cucumber --lang en-lol help
-  
-There are some really awesome new features in this release: Tagging, Autoformatting, automatic 
-aliasing of keywords in all languages, full Ruby 1.9 support and improved output 
-for multiline arguments are some of the highlights. 
+
+There are some really awesome new features in this release: Tagging, Autoformatting, automatic
+aliasing of keywords in all languages, full Ruby 1.9 support and improved output
+for multiline arguments are some of the highlights.
 
 == Bugfixes
-* New StepInvocation breaks console formatter for pending steps. (#241 Jacob Radford) 
-* Within Scenario Outlines when replacing with a nil in a step name use empty string instead. (#237 Joseph Wilk) 
+* New StepInvocation breaks console formatter for pending steps. (#241 Jacob Radford)
+* Within Scenario Outlines when replacing with a nil in a step name use empty string instead. (#237 Joseph Wilk)
 * Fixed bug with Scenario Outlines incorrectly replacing values in step tables with nil. (#237 Joseph Wilk)
 * Within Scenario Outlines when replacing with a nil in multiline strings use empty string instead. (#238 Joseph Wilk)
 * Re-structure the ast: Feature -> Background -> (Scenario|ScenarioOutline)*. Fixes bug with background being called outside transactions. (#181 Joseph Wilk)
@@ -103,7 +103,7 @@ for multiline arguments are some of the highlights.
 * Rails generators supports testunit and rspec option, defaulting to rspec (#217 Josh Nichols)
 * Sinatra Example (#204 Rob Holland)
 * Keywords can be aliased in languages.yml. See English for an example (examples: Examples|Scenarios)
-* Adding support for Background (#153 Joseph Wilk) 
+* Adding support for Background (#153 Joseph Wilk)
 * Added Česky/Czech (Vojtech Salbaba)
 * New --no-multiline option to reduce noise in output. Useful if lots of features are failing. (Aslak Hellesøy)
 * Added ability to pass URIs to cucumber in addition to files and directories. Useful for troubleshooting! (Aslak Hellesøy)
@@ -182,8 +182,8 @@ Bugfix release
 
 == 0.1.14 2009-01-04
 
-This is the first release of Cucumber that runs on Ruby 1.9. There are still some encoding-related issues 
-with Arabic (ar), Japanese (ja) and Simplified Chinese (zh-CN). Patches are welcome. Other than that - 
+This is the first release of Cucumber that runs on Ruby 1.9. There are still some encoding-related issues
+with Arabic (ar), Japanese (ja) and Simplified Chinese (zh-CN). Patches are welcome. Other than that -
 a couple of minor bug fixes and polishing.
 
 === New features
@@ -200,9 +200,9 @@ a couple of minor bug fixes and polishing.
 == 0.1.13 2008-12-20
 
 It's time for some new features again. Output is now much better since you can use diffing, tweak
-the output colours and get the full --backtrace if you want. Managing your support/* files became 
-a little easier since they are now always loaded before the step definitions. Life became easier 
-for Windows users in Norway (and other countries using unicode in the features). Plus several other 
+the output colours and get the full --backtrace if you want. Managing your support/* files became
+a little easier since they are now always loaded before the step definitions. Life became easier
+for Windows users in Norway (and other countries using unicode in the features). Plus several other
 bug fixes.
 
 Enjoy!
@@ -226,7 +226,7 @@ Enjoy!
 * Fixed a bug where row step outlines were loosing step tables. (#121 Joseph Wilk, Ben Mabey)
 * The Cucumber Autotest plugin now launches JRuby if autotest is run with JRuby (Aslak Hellesøy)
 * Provide helpful and non-confusing error message when specified profile is blank. (#118, Ben Mabey)
-* Improve handling and error messages for malformed cucumber.yml files. (#117, Ben Mabey) 
+* Improve handling and error messages for malformed cucumber.yml files. (#117, Ben Mabey)
 * document :x run option in command line help (#114, Aslak Hellesøy)
 * Change 'visits' to 'visit' in features generator to comply with new Webrat API (Darius Roberts)
 
@@ -234,7 +234,7 @@ Enjoy!
 
 == 0.1.12 2008-12-04
 
-This is the "getting serious with IronRuby release" - largely based on 
+This is the "getting serious with IronRuby release" - largely based on
 "Patrick Gannon":http://www.patrickgannon.net/archive/2008/10/23/bdd-style-feature-tests-using-ironruby-and-rspeccucumber.aspx's
 blog entry.
 
@@ -280,7 +280,7 @@ This will run foo.feature at line 15 and bar.feature at line 6, 45 and 111.
 * AUTOFEATURE=tRue works (case insensitive) (Aslak Hellesøy)
 * Initial support for .NET via IronRuby. (Aslak Hellesøy)
 * Lithuanian translation (sauliusgrigaitis)
-* New webrat step defintions to wrap the new selects_time, selects_date, and selects_datetime methods. (Ben Mabey) 
+* New webrat step defintions to wrap the new selects_time, selects_date, and selects_datetime methods. (Ben Mabey)
 * Try to load webrat gem if it's not installed as a plugin (Aslak Hellesøy)
 * Support example.feature:20 or example.feature:10:20:30 syntax for running features at specific line number(s). (#88 Joseph Wilk)
 
@@ -332,7 +332,7 @@ support and how multiline strings work in feature files:
       that "indents"
     and spans
     several lines
-  
+
     """
 
   # In your steps.rb file
@@ -388,7 +388,7 @@ Tables used to define more examples after a scenario must now be prefixed. In En
 
   Feature: Addition
     In order to avoid silly mistakes
-    As a math idiot 
+    As a math idiot
     I want to be told the sum of two numbers
 
     Scenario: Add two numbers
@@ -405,7 +405,7 @@ Tables used to define more examples after a scenario must now be prefixed. In En
 
 Languages that are not updated yet will have to use "More Examples" until we get the translations.
 
-Tables can also be used as arguments to individual steps. In fact, steps now support a single argument 
+Tables can also be used as arguments to individual steps. In fact, steps now support a single argument
 that can span several lines. This can be a table or a string.
 
 Example:
@@ -472,7 +472,7 @@ example:
     Given "I am registered as #{role}, #{name}, secret"
     When "I log in with #{name}, secret"
   end
-  
+
   Given /I am registered as (.*), (.*), (.*)/ do |role, name, password|
     # (Code removed for brevity)
   end
@@ -485,7 +485,7 @@ This means that steps can be reused in other steps. The GivenScenario feature ac
 effect (on the scenario level), but this feature is something we're not very happy with, mostly
 because it's not parameterisable. Calling steps from steps is.
 
-GivenScenario will still be working several releases, but the plan is to remove it completely in 
+GivenScenario will still be working several releases, but the plan is to remove it completely in
 the 0.3.0 release.
 
 === Seeing where a step is defined

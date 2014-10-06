@@ -4,7 +4,7 @@ describe "A template with an implicit helper", :type => :view do
   before(:each) do
     render "view_spec/implicit_helper"
   end
-  
+
   accesses_configured_helper_methods
 
   it "should include the helper" do
@@ -83,13 +83,13 @@ describe "A template that includes a partial", :type => :view do
     render!
     response.should have_tag('div', "This is text from a method in the ApplicationHelper")
   end
-  
+
   it "should pass should_receive(:render) with the right partial" do
     template.should_receive(:render).with(:partial => 'partial')
     render!
     template.verify_rendered
   end
-  
+
   it "should fail should_receive(:render) with the wrong partial" do
     template.should_receive(:render).with(:partial => 'non_existent')
     render!
@@ -100,13 +100,13 @@ describe "A template that includes a partial", :type => :view do
       e.backtrace.find{|line| line =~ /#{__FILE__}\:#{__LINE__ - 6}/}.should_not be_nil
     end
   end
-  
+
   it "should pass should_receive(:render) when a partial is expected twice and happens twice" do
     template.should_receive(:render).with(:partial => 'partial_used_twice').twice
     render!
     template.verify_rendered
   end
-  
+
   it "should pass should_receive(:render) when a partial is expected once and happens twice" do
     template.should_receive(:render).with(:partial => 'partial_used_twice')
     render!
@@ -117,7 +117,7 @@ describe "A template that includes a partial", :type => :view do
       e.backtrace.find{|line| line =~ /#{__FILE__}\:#{__LINE__ - 6}/}.should_not be_nil
     end
   end
-  
+
   it "should fail should_receive(:render) with the right partial but wrong options" do
     template.should_receive(:render).with(:partial => 'partial', :locals => {:thing => Object.new})
     render!
@@ -159,7 +159,7 @@ describe "A view that includes a partial using an array as partial_path", :type 
   end
 
   it "should render the array passed through to render_partial without modification" do
-    render "view_spec/template_with_partial_with_array" 
+    render "view_spec/template_with_partial_with_array"
     response.body.should match(/^Renderable Object$/)
   end
 end
@@ -206,7 +206,7 @@ describe "A view", :type => :view do
   it "should have a controller param" do
     response.should have_tag("div#controller", "view_spec")
   end
-  
+
   it "should have an action param" do
     response.should have_tag("div#action", "accessor")
   end
@@ -223,11 +223,11 @@ describe "An instantiated ViewExampleGroupController", :type => :view do
   before do
     render "view_spec/foo/show"
   end
-  
+
   it "should return the name of the real controller that it replaces" do
     @controller.controller_name.should == 'foo'
   end
-  
+
   it "should return the path of the real controller that it replaces" do
     @controller.controller_path.should == 'view_spec/foo'
   end
@@ -313,7 +313,7 @@ module Spec
         it "should clear ActionView::Base.base_view_path on teardown" do
           group = describe("base_view_path_cleared flag", :type => :view) {}
           example = group.new(Spec::Example::ExampleProxy.new) {}
-          
+
           ActionView::Base.should_receive(:base_view_path=).with(nil)
           example.run_after_each
         end

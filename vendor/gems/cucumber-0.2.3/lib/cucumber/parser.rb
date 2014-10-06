@@ -5,7 +5,7 @@ require 'cucumber/parser/treetop_ext'
 require 'cucumber/parser/table'
 
 module Cucumber
-  # Classes in this module parse feature files and translate the parse tree 
+  # Classes in this module parse feature files and translate the parse tree
   # (concrete syntax tree) into an abstract syntax tree (AST) using
   # <a href="http://martinfowler.com/dslwip/EmbeddedTranslation.html">Embedded translation</a>.
   #
@@ -16,7 +16,7 @@ module Cucumber
     def self.load_parser(keywords)
       Loader.new(keywords)
     end
-    
+
     class Loader
       def initialize(keywords)
         @keywords = keywords

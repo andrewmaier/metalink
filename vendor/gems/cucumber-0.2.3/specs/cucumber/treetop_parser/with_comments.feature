@@ -1,6 +1,6 @@
 # Header title
 # Two lines
-Feature: Some header  
+Feature: Some header
 
   # Scenario header
   # on two lines

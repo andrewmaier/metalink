@@ -19,7 +19,7 @@ module Spec
             include helper_module
           end
         end
-        
+
         def forget_variables_added_to_assigns
         end
       end
@@ -37,7 +37,7 @@ module Spec
       #     before do
       #       render 'login/login'
       #     end
-      # 
+      #
       #     it "should display login form" do
       #       response.should have_tag("form[action=/login]") do
       #         with_tag("input[type=text][name=email]")
@@ -119,20 +119,20 @@ module Spec
         # See Spec::Rails::Example::ViewExampleGroup for more information.
         def render(*args)
           options = Hash === args.last ? args.pop : {}
-          
-          if args.empty? 
-            unless [:partial, :inline, :file, :template, :xml, :json, :update].any? {|k| options.has_key? k} 
+
+          if args.empty?
+            unless [:partial, :inline, :file, :template, :xml, :json, :update].any? {|k| options.has_key? k}
               args << self.class.description_parts.first
             end
           end
-          
+
           options[:template] = args.first.to_s.sub(/^\//,'') unless args.empty?
-          
+
           set_base_view_path(options)
           add_helpers(options)
 
           assigns[:action_name] = @action_name
-          
+
           @request.path_parameters = @request.path_parameters.merge(
             :controller => derived_controller_name(options),
             :action => derived_action_name(options)

@@ -7,7 +7,7 @@ table {
   border-collapse: collapse;
   border-spacing: 10px;
 }
- 
+
 td
 {
   border-color: #FFFFFF;
@@ -19,7 +19,7 @@ td
 .multiline_table {
   padding-left: 4em;
 }
- 
+
 .missing {
   color: yellow;
 }

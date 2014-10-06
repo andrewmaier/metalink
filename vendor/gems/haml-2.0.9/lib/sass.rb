@@ -58,7 +58,7 @@ require 'haml/version'
 #   sass input.sass output.css
 #
 # Use <tt>sass --help</tt> for full documentation.
-# 
+#
 # Using Sass in Ruby code is very simple.
 # After installing the Haml gem,
 # you can use it by running <tt>require "sass"</tt>
@@ -793,7 +793,7 @@ require 'haml/version'
 # ...or by setting the <tt>Merb::Plugin.config[:sass]</tt> hash in <tt>init.rb</tt> in Merb...
 #
 #   Merb::Plugin.config[:sass][:style] = :compact
-# 
+#
 # ...or by passing an options hash to Sass::Engine.new.
 # Available options are:
 #

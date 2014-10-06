@@ -29,7 +29,7 @@ describe Proc do
       end
     }.should raise_error(Cucumber::ArityMismatchError, "expected 2 block argument(s), got 1")
   end
-  
+
   it "should remove extraneous path info for file" do
     proc = lambda {|a,b|}
     proc.file_colon_line.should == "specs/cucumber/core_ext/proc_spec.rb:34"

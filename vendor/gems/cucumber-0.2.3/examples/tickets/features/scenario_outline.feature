@@ -12,7 +12,7 @@ Feature: Outlines
     | left  | start  | eat  |
     |  7    |  12    |  5   |
     |  15   |  20    |  5   |
-    
+
   Scenario Outline: reusing place holder
     Given there are <start> cucumbers
     When I eat <eat> cucumbers
@@ -28,7 +28,7 @@ Feature: Outlines
     | start  | eat  | left |
     |  120    |  50   |  70   |
     |  200    |  50   |  150  |
-  
+
   Scenario Outline: no placeholders
     Given there are 12 cucumbers
     When I eat 5 cucumbers
@@ -38,7 +38,7 @@ Feature: Outlines
     | start  | eat  | left |
     |  12    |  5   |  7   |
     |  20    |  5   |  15  |
-  
+
   Scenario Outline: using '<' and '>' not as placeholder
     Given the belly space is < 12 and > 6
     And there are <start> cucumbers
@@ -75,7 +75,7 @@ Feature: Outlines
       """
         Must buy some cucumbers
       """
-    
+
     Examples:
       |  fruits   |
       | cucumbers |

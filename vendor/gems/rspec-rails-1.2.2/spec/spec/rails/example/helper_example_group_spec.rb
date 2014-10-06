@@ -3,7 +3,7 @@ Spec::Runner.configuration.global_fixtures = :people
 
 describe ExplicitHelper, :type => :helper do
   include ExplicitHelper
-  
+
   it "should not require naming the helper if describe is passed a type" do
     method_in_explicit_helper.should match(/text from a method/)
     helper.method_in_explicit_helper.should match(/text from a method/)
@@ -44,19 +44,19 @@ module Spec
           session_foo.should == 'bar'
           helper.session_foo.should == 'bar'
         end
-        
+
         it "should have access to params" do
           params[:foo] = 'bar'
           params_foo.should == 'bar'
           helper.params_foo.should == 'bar'
         end
-        
+
         it "should have access to request" do
           request.stub!(:thing).and_return('bar')
           request_thing.should == 'bar'
           helper.request_thing.should == 'bar'
         end
-        
+
         it "should have access to flash" do
           flash[:thing] = 'camera'
           flash_thing.should == 'camera'
@@ -86,7 +86,7 @@ module Spec
           lachie.class.should == Person
         end
       end
-      
+
       describe "methods from standard helpers", :type => :helper do
         helper_name :explicit
         it "should be exposed to the helper" do
@@ -121,7 +121,7 @@ module Spec
           end
         end
       end
-      
+
       # TODO: BT - Helper Examples should proxy method_missing to a Rails View instance.
       # When that is done, remove this method
       describe HelperExampleGroup, "#protect_against_forgery?", :type => :helper do
@@ -130,7 +130,7 @@ module Spec
           helper.protect_against_forgery?.should be_false
         end
       end
-      
+
       describe HelperExampleGroup, "#assigns", :type => :helper do
         helper_name :addition
         it "should expose variables to helper" do
@@ -143,10 +143,10 @@ module Spec
           assigns[:addend].should == 3
         end
       end
-      
+
       describe HelperExampleGroup, "using a helper that uses output_buffer inside helper", :type => :helper do
         helper_name :explicit
-        
+
         before(:each) do
           if Rails::VERSION::STRING <= "2.1"
             pending("need to get this new feature working against pre 2.2 versions of rails")
@@ -220,7 +220,7 @@ module Bug719
       end
     end
   end
-  
+
   describe ImagesHelper, :type => :helper do
     it "should render a hide_images_button" do
       helper.hide_images_button.should have_tag('div[class=?]','hide_images_button') do

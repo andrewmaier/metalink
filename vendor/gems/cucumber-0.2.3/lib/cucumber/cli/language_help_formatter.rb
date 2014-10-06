@@ -46,11 +46,11 @@ http://wiki.github.com/aslakhellesoy/cucumber/spoken-languages
           if(@options[:check_lang])
             @incomplete = Cucumber.language_incomplete?(value)
           end
-          status = :comment 
+          status = :comment
         elsif @incomplete
           status = :undefined
         end
-        
+
         @col += 1
         super(value, width, status)
       end

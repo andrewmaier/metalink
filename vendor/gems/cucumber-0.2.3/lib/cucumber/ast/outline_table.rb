@@ -5,7 +5,7 @@ module Cucumber
         super(raw)
         @scenario_outline = scenario_outline
         @cells_class = ExampleCells
-        
+
         cells_rows.each do |cells|
           cells.create_step_invocations!(scenario_outline)
         end
@@ -23,12 +23,12 @@ module Cucumber
       def descend?(visitor)
         cells_rows.detect{|cells_row| cells_row.descend?(visitor)}
       end
-      
+
       def matches?(visitor, cells)
         @scenario_outline.matches_tags_and_name?(visitor) &&
         (visitor.matches_lines?(cells) || visitor.matches_lines?(@scenario_outline))
       end
-      
+
       def skip_invoke!
         cells_rows.each do |cells|
           cells.skip_invoke!
@@ -39,7 +39,7 @@ module Cucumber
         def create_step_invocations!(scenario_outline)
           @step_invocations = scenario_outline.step_invocations(self)
         end
-        
+
         def descend?(visitor)
           @table.matches?(visitor, self)
         end

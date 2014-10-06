@@ -59,10 +59,10 @@ module Cucumber
         def build
           background = bg.respond_to?(:build) ? bg.build : nil
           Ast::Feature.new(
-            background, 
-            comment.build, 
-            tags.build, 
-            header.text_value, 
+            background,
+            comment.build,
+            tags.build,
+            header.text_value,
             feature_elements.build(background)
           )
         end
@@ -462,9 +462,9 @@ module Cucumber
       module Background1
         def build
           Ast::Background.new(
-            comment.build, 
+            comment.build,
             background_keyword.line,
-            background_keyword.text_value, 
+            background_keyword.text_value,
             steps.build
           )
          end
@@ -631,11 +631,11 @@ module Cucumber
         def build(background)
           Ast::Scenario.new(
             background,
-            comment.build, 
+            comment.build,
             tags.build,
             scenario_keyword.line,
-            scenario_keyword.text_value, 
-            name.text_value, 
+            scenario_keyword.text_value,
+            name.text_value,
             steps.build
           )
         end
@@ -749,12 +749,12 @@ module Cucumber
         def build(background)
           Ast::ScenarioOutline.new(
             background,
-            comment.build, 
+            comment.build,
             tags.build,
-            scenario_outline_keyword.line, 
-            scenario_outline_keyword.text_value, 
-            name.text_value, 
-            steps.build, 
+            scenario_outline_keyword.line,
+            scenario_outline_keyword.text_value,
+            name.text_value,
+            steps.build,
             examples_sections.build
           )
         end

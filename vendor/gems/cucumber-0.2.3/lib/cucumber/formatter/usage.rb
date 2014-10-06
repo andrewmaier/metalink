@@ -28,7 +28,7 @@ module Cucumber
           location = @step.file_colon_line
           return if @locations.index(location)
           @locations << location
-          
+
           description = format_step(keyword, step_match, status, nil)
           length = (keyword + step_match.format_args).jlength
           @step_definitions[step_match.step_definition] << [step_match, description, length, location]
@@ -37,8 +37,8 @@ module Cucumber
 
       def print_summary
         sorted_defs = @step_definitions.keys.sort_by{|step_definition| step_definition.backtrace_line}
-        
-        sorted_defs.each do |step_definition|          
+
+        sorted_defs.each do |step_definition|
           step_matches_and_descriptions = @step_definitions[step_definition].sort_by do |step_match_and_description|
             step_match = step_match_and_description[0]
             step_match.step_definition.regexp.inspect
@@ -46,7 +46,7 @@ module Cucumber
 
           step_matches = step_matches_and_descriptions.map{|step_match_and_description| step_match_and_description[0]}
 
-          lengths = step_matches_and_descriptions.map do |step_match_and_description| 
+          lengths = step_matches_and_descriptions.map do |step_match_and_description|
             step_match_and_description[2]
           end
           lengths << step_definition.text_length

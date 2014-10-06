@@ -34,7 +34,7 @@ end
 module Webrat
   def self.start_app_server
   end
-  
+
   def self.stop_app_server
   end
 end

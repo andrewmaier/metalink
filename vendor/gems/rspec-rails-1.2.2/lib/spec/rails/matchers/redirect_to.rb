@@ -66,7 +66,7 @@ module Spec
           @expected_status = interpret_status(options[:status])
           self
         end
-        
+
        def expected_url
           case @expected
             when Hash

@@ -10,7 +10,7 @@ if Cucumber::WINDOWS_MRI && `chcp` =~ /(\d+)/
 
   if codepages.include?(codepage)
     Cucumber::CODEPAGE = "cp#{codepage}"
-  
+
     require 'iconv'
     module Kernel
       alias cucumber_print print

@@ -21,7 +21,7 @@ module Spec
         def session
           request.session
         end
-        
+
         # Overrides the <tt>cookies()</tt> method in
         # ActionController::TestResponseBehaviour, returning a proxy that
         # accesses the requests cookies when setting a cookie and the
@@ -49,7 +49,7 @@ module Spec
         def cookies
           @cookies ||= Spec::Rails::Example::CookiesProxy.new(self)
         end
-        
+
         alias_method :orig_assigns, :assigns
 
         # :call-seq:

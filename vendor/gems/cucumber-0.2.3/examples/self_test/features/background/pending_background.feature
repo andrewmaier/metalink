@@ -5,6 +5,6 @@ Feature: Pending background sample
 
   Scenario: pending background
     Then I should have '10' cukes
-    
+
   Scenario: another pending background
     Then I should have '10' cukes

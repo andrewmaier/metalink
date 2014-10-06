@@ -9,7 +9,7 @@ module Cucumber
           raise "I flunked"
         end
       end
-      
+
       def create_feature(step_mother)
         step_mother.extend(StepMother)
         step_mother.Given /^a (.*) step with an inline arg:$/ do |what, table|
@@ -29,13 +29,13 @@ module Cucumber
            I like
           Cucumber sandwich
         }, 10)
-        
+
         background = Ast::Background.new(Ast::Comment.new(""), 2, "Background:",
           [
             Step.new(3, "Given", "a passing step")
           ]
         )
-        
+
         f = Ast::Feature.new(
           background,
           Ast::Comment.new("# My feature comment\n"),

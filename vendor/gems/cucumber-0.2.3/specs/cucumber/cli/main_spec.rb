@@ -11,7 +11,7 @@ module Cli
     end
 
     describe "verbose mode" do
-      
+
       before(:each) do
         @empty_feature = Ast::Feature.new(nil, Ast::Comment.new(''), Ast::Tags.new(2, []), "Feature", [])
         Dir.stub!(:[])
@@ -20,23 +20,23 @@ module Cli
       it "should show ruby files required" do
         @cli = Main.new(%w{--verbose --require example.rb}, @out)
         @cli.stub!(:require)
-        
+
         @cli.execute!(Object.new.extend(StepMother))
-        
+
         @out.string.should include('example.rb')
       end
-      
+
       it "should show feature files parsed" do
         @cli = Main.new(%w{--verbose example.feature}, @out)
         @cli.stub!(:require)
-        
+
         Parser::FeatureParser.stub!(:new).and_return(mock("feature parser", :parse_file => @empty_feature))
-          
+
         @cli.execute!(Object.new.extend(StepMother))
 
         @out.string.should include('example.feature')
       end
-      
+
     end
 
     describe "diffing" do
@@ -44,32 +44,32 @@ module Cli
       before :each do
         @configuration = mock('Configuration', :null_object => true)
         Configuration.should_receive(:new).and_return(@configuration)
-        
+
         @step_mother = mock('StepMother', :null_object => true)
-        
+
         @cli = Main.new(nil, @out)
       end
-      
+
       it "uses Spec Differ::Default when diff is enabled" do
         @configuration.should_receive(:diff_enabled?).and_return(true)
-        
+
         ::Spec::Expectations::Differs::Default.should_receive(:new)
-        
+
         @cli.execute!(@step_mother)
       end
-      
+
       it "does not use Spec Differ::Default when diff is disabled" do
         @configuration.should_receive(:diff_enabled?).and_return(false)
-        
+
         ::Spec::Expectations::Differs::Default.should_not_receive(:new)
-        
+
         @cli.execute!(@step_mother)
       end
-      
+
     end
 
     describe "--format with class" do
-     
+
      describe "in module" do
 
         it "should resolve each module until it gets Formatter class" do
@@ -87,15 +87,15 @@ module Cli
         end
 
       end
-     
+
       describe "exists and valid constructor" do
-     
+
         before(:each) do
           @mock_formatter_class = mock('formatter class')
           Object.stub!(:const_get).and_return(@mock_formatter_class)
           Object.stub!(:const_defined?).with('magical').and_return(true)
         end
-        
+
         xit "should create the formatter" do
           cli = Main.new
           mock_formatter = mock('magical formatter')
@@ -105,7 +105,7 @@ module Cli
 
           cli.execute!(stub('step mother'), mock_executor, stub('features'))
         end
-                
+
         xit "should register the formatter with broadcaster" do
           cli = Main.new
           broadcaster = Broadcaster.new
@@ -115,27 +115,27 @@ module Cli
           cli.parse_options!(%w{--format magical})
 
           broadcaster.should_receive(:register).with(mock_formatter)
-        
+
           cli.execute!(stub('step mother'), mock_executor, stub('features'))
         end
-      
+
       end
-          
+
       describe "exists but invalid constructor" do
 
         before(:each) do
           @out = StringIO.new
           @error = StringIO.new
           @cli = Main.new(@out, @error)
-          
+
           mock_formatter_class = stub('formatter class')
           mock_formatter_class.stub!(:new).and_raise("No such method")
           Object.stub!(:const_get).and_return(mock_formatter_class)
           Object.stub!(:const_defined?).with('exists_but_evil').and_return(true)
-          
-          @cli.parse_options!(%w{--format exists_but_evil}) 
+
+          @cli.parse_options!(%w{--format exists_but_evil})
         end
-        
+
         xit "should show exception" do
           Kernel.stub!(:exit)
 
@@ -143,15 +143,15 @@ module Cli
 
           @error.string.should include("No such method")
         end
-        
+
         xit "should exit" do
           Kernel.should_receive(:exit)
 
           @cli.execute!(stub('step mother'), mock_executor, stub('features'))
         end
-                
+
       end
-          
+
       describe "non-existent" do
 
         before(:each) do
@@ -164,15 +164,15 @@ module Cli
           Kernel.stub!(:exit)
 
           @cli.execute!(stub('step mother'), mock_executor, stub('features'))
-          
+
           @error.string.should include("Invalid format: invalid\n")
         end
-        
+
         xit "should display --help" do
           Kernel.stub!(:exit)
 
           @cli.execute!(Object.new.extend(StepMother))
-          
+
           @out.string.should include("Usage: cucumber")
         end
 
@@ -181,9 +181,9 @@ module Cli
 
           @cli.execute!(stub('step mother'), mock_executor, stub('features'))
         end
-        
+
       end
-            
+
     end
 
   end

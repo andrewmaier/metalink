@@ -1,9 +1,9 @@
-Some title  
+Some title
 
-  Scenario: first     
+  Scenario: first
     Given a
     Given b
-   
-  Scenario: second  
+
+  Scenario: second
     GivenScenario: first
     Given c

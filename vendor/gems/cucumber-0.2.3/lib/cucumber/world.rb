@@ -6,7 +6,7 @@ module Cucumber
         alias_method adverb, :__cucumber_invoke
       end
     end
-    
+
     attr_writer :__cucumber_step_mother, :__cucumber_visitor, :__cucumber_current_step
 
     # Call a step from within a step definition
@@ -20,7 +20,7 @@ module Cucumber
         raise e
       end
     end
-    
+
     def table(text, file=nil, line_offset=0)
       @table_parser ||= Parser::TableParser.new
       @table_parser.parse_or_fail(text.strip, file, line_offset)

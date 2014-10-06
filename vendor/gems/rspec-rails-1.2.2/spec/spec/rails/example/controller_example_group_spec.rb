@@ -18,81 +18,81 @@ require File.join(File.dirname(__FILE__), "/shared_routing_example_group_example
 
     describe "with a specified subject" do
       subject { 'specified' }
-      
+
       it "uses the specified subject" do
         subject.should == 'specified'
       end
     end
-    
+
     it "should provide controller.session as session" do
       get 'action_with_template'
       session.should equal(controller.session)
     end
-  
+
     it "should provide the same session object before and after the action" do
       session_before = session
       get 'action_with_template'
       session.should equal(session_before)
     end
-  
+
     it "should keep the same data in the session before and after the action" do
       session[:foo] = :bar
       get 'action_with_template'
       session[:foo].should == :bar
     end
-  
+
     it "should ensure controller.session is NOT nil before the action" do
       controller.session.should_not be_nil
       get 'action_with_template'
     end
-    
+
     it "should ensure controller.session is NOT nil after the action" do
       get 'action_with_template'
       controller.session.should_not be_nil
     end
-    
+
     it "should allow specifying a partial with partial name only" do
       get 'action_with_partial'
       response.should render_template("_partial")
     end
-    
+
     it "should allow specifying a partial with should_receive(:render)" do
       controller.should_receive(:render).with(:partial => "controller_spec/partial")
       get 'action_with_partial'
     end
-    
+
     it "should allow specifying a partial with should_receive(:render) with object" do
       controller.should_receive(:render).with(:partial => "controller_spec/partial", :object => "something")
       get 'action_with_partial_with_object', :thing => "something"
     end
-    
+
     it "should allow specifying a partial with should_receive(:render) with locals" do
       controller.should_receive(:render).with(:partial => "controller_spec/partial", :locals => {:thing => "something"})
       get 'action_with_partial_with_locals', :thing => "something"
     end
-    
+
     it "should yield to render :update" do
       template = stub("template")
       controller.should_receive(:render).with(:update).and_yield(template)
       template.should_receive(:replace).with(:bottom, "replace_me", :partial => "non_existent_partial")
       get 'action_with_render_update'
     end
-    
+
     it "should allow a path relative to RAILS_ROOT/app/views/ when specifying a partial" do
       get 'action_with_partial'
       response.should render_template("controller_spec/_partial")
     end
-    
+
     it "should provide access to flash" do
       get 'action_which_sets_flash'
       flash[:flash_key].should == "flash value"
     end
-    
+
     it "should provide access to flash values set after a session reset" do
       get 'action_setting_flash_after_session_reset'
       flash[:after_reset].should == "available"
     end
-    
+
     it "should not provide access to flash values set before a session reset" do
       get 'action_setting_flash_before_session_reset'
       flash[:before_reset].should_not == "available"
@@ -104,28 +104,28 @@ require File.join(File.dirname(__FILE__), "/shared_routing_example_group_example
         get 'action_which_gets_session', :expected => "session value"
       end.should_not raise_error
     end
-    
+
     it "allows inline rendering" do
       get 'action_that_renders_inline'
       response.body.should == "inline code"
     end
-    
+
     describe "handling should_receive(:render)" do
       it "should warn" do
         controller.should_receive(:render).with(:template => "controller_spec/action_with_template")
         get :action_with_template
       end
     end
-    
+
     describe "handling should_not_receive(:render)" do
       it "should warn" do
         controller.should_not_receive(:render).with(:template => "the/wrong/template")
         get :action_with_template
       end
     end
-    
+
     describe "setting cookies in the request" do
-    
+
       it "should support a String key" do
         cookies['cookie_key'] = 'cookie value'
         get 'action_which_gets_cookie', :expected => "cookie value"
@@ -135,16 +135,16 @@ require File.join(File.dirname(__FILE__), "/shared_routing_example_group_example
         cookies[:cookie_key] = 'cookie value'
         get 'action_which_gets_cookie', :expected => "cookie value"
       end
-      
+
       it "should support a Hash value" do
         cookies[:cookie_key] = {'value' => 'cookie value', 'path' => '/not/default'}
         get 'action_which_gets_cookie', :expected => {'value' => 'cookie value', 'path' => '/not/default'}
       end
-      
+
     end
-  
+
     describe "reading cookies from the response" do
-  
+
       it "should support a Symbol key" do
         get 'action_which_sets_cookie', :value => "cookie value"
         if ::Rails::VERSION::STRING >= "2.3"
@@ -162,9 +162,9 @@ require File.join(File.dirname(__FILE__), "/shared_routing_example_group_example
           cookies['cookie_key'].should == ["cookie value"]
         end
       end
-    
+
     end
-    
+
     it "should expose instance vars through the assigns hash" do
       get 'action_setting_the_assigns_hash'
       assigns[:indirect_assigns_key].should == :indirect_assigns_key_value
@@ -187,7 +187,7 @@ require File.join(File.dirname(__FILE__), "/shared_routing_example_group_example
         get 'action_with_skipped_before_filter'
       }.should_not raise_error
     end
-    
+
     describe "extending #render on a controller" do
       it "supports two arguments (as with rails 2.2)" do
         get 'action_with_two_arg_render'
@@ -206,7 +206,7 @@ require File.join(File.dirname(__FILE__), "/shared_routing_example_group_example
       response.redirect_url.should == "http://test.host/redirect_spec/somewhere"
       response.should redirect_to("http://test.host/redirect_spec/somewhere")
     end
-    
+
     it "a call to response.should redirect_to should fail if no redirect" do
       get 'action_with_no_redirect'
       lambda {
@@ -217,7 +217,7 @@ require File.join(File.dirname(__FILE__), "/shared_routing_example_group_example
       }.should fail_with("expected redirect to \"http://test.host/redirect_spec/somewhere\", got no redirect")
     end
   end
-  
+
   describe "Given a controller spec running in #{mode} mode" do
     example_group = describe "A controller spec"
     # , :type => :controller do
@@ -231,14 +231,14 @@ require File.join(File.dirname(__FILE__), "/shared_routing_example_group_example
     #   ] do
     end
   end
-  
+
 end
 
 ['integration', 'isolation'].each do |mode|
   describe "A controller example running in #{mode} mode", :type => :controller do
     controller_name :controller_inheriting_from_application_controller
     integrate_views if mode == 'integration'
-    
+
     it "should only have a before filter inherited from ApplicationController run once..." do
       controller.should_receive(:i_should_only_be_run_once).once
       get :action_with_inherited_before_filter
@@ -248,12 +248,12 @@ end
 
 describe ControllerSpecController, :type => :controller do
   it "should use the controller passed to #describe" do
-  end  
+  end
 end
 
 describe "A controller spec with controller_name set", :type => :controller do
   controller_name :controller_spec
-  
+
   describe "nested" do
     it "should inherit the controller name" do
       get 'action_with_template'
@@ -283,7 +283,7 @@ module Spec
           end
         end
       end
-      
+
       describe ControllerExampleGroup do
         it "should clear its name from the description" do
           group = describe("foo", :type => :controller) do
